@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject settings;
+    [SerializeField] private GameObject saves;
 
-    public void PlayGame()
+    public void Play()
     {
-        SceneManager.LoadScene("Main scene");
+        saves.SetActive(true);
     }
 
     public void Settings()
