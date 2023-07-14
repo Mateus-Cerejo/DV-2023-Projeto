@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CityAnimations : MonoBehaviour
+public class CityBehavior : MonoBehaviour
 {
     private GameObject selection;
     private RaycastHit raycastHit;
@@ -42,14 +42,15 @@ public class CityAnimations : MonoBehaviour
                 if (selection != raycastHit.transform.gameObject)
                 {
                     audioSrc.Play();
-                    Debug.Log("aqui");
                 }
             }
-            else
+
+            if (Input.GetButtonDown("Fire1"))
             {
-
+                if (raycastHit.transform.gameObject.TryGetComponent(out UpgradableBuilding building))
+                {
+                }
             }
-
 
             selection = raycastHit.transform.gameObject;
         }
