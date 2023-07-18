@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:DV 2023 Projeto/Assets/Samples.meta
 guid: e7601c6b210cf4d529f6c46a97801dd0
+========
+guid: 48535820881d24b43ba577f60cf9785f
+>>>>>>>> ricardo2:DV 2023 Projeto/Assets/Samples/Animation Rigging.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

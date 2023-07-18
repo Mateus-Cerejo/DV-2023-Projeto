@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:DV 2023 Projeto/Assets/World/Blink/Art/Textures/StylizedDesertTextures/Rocks_1_Sand_3/Rocks_1_Sand_3_AmbientOcclusion.png.meta
 guid: aa9d3601a6bd8354190cf1f4611111d0
+========
+guid: a999ebd188c6842119197c7562792a72
+>>>>>>>> ricardo2:DV 2023 Projeto/Assets/Samples/Animation Rigging/1.1.1/Animation Rigging Constraint Samples/Info/Icons/ARicon.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -57,7 +61,6 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
