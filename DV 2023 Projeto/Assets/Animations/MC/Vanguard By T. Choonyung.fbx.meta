@@ -3,17 +3,7 @@ guid: 13879531d67e2814ba32030fc77a27ee
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: VanguardBodyMat
-    second: {fileID: -5041778367412212062, guid: 6e03be87640af4b4a93e7eefac2bbb63, type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Vanguard_VisorMat
-    second: {fileID: 6682663540458325227, guid: 6e03be87640af4b4a93e7eefac2bbb63, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
