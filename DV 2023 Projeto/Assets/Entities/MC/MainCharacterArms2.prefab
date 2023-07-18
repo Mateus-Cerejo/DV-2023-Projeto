@@ -1653,6 +1653,7 @@ Transform:
   m_Children:
   - {fileID: 4163629144194365286}
   - {fileID: 8349693059341440698}
+  - {fileID: 4938201270468895241}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2732,3 +2733,65 @@ Transform:
   m_Father: {fileID: 2818285788401362979}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4828626917677794786
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5006028025750415352}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.784155
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.7230959
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+      propertyPath: m_Name
+      value: Vanguard By T. Choonyung
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+--- !u!4 &4938201270468895241 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 13879531d67e2814ba32030fc77a27ee, type: 3}
+  m_PrefabInstance: {fileID: 4828626917677794786}
+  m_PrefabAsset: {fileID: 0}
