@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ActionBox : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI upgradeBtnText;
+    [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI costWood;
     [SerializeField] private TextMeshProUGUI costStone;
     [SerializeField] private TextMeshProUGUI costMetal;
@@ -15,6 +16,7 @@ public class ActionBox : MonoBehaviour
 
     public void Open(int curLevel, BuildingSO buildingSO, UpgradableBuilding upBuilding)
     {
+        nameText.text = upBuilding.name;
         if (curLevel +1 == buildingSO.getNumOfLevels())
         {
             upgradeBtnText.SetText("Max LVL " + (curLevel + 1) + "/" + buildingSO.getNumOfLevels());
@@ -33,6 +35,11 @@ public class ActionBox : MonoBehaviour
 
             statsText.SetText(buildingSO.GetUpgradeText()[curLevel]);
         }
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()

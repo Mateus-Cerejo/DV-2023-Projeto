@@ -61,6 +61,7 @@ public class UpgradableBuilding : MonoBehaviour
                     }
                     break;
             }
+            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
         }
     }
 
@@ -80,6 +81,7 @@ public class UpgradableBuilding : MonoBehaviour
                     }
                     break;
             }
+            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
         }
     }
     public void UpgradeHospital() {
@@ -98,6 +100,7 @@ public class UpgradableBuilding : MonoBehaviour
                     }
                     break;
             }
+            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
         }
     }
     public void UpgradeFactory() {
@@ -116,6 +119,7 @@ public class UpgradableBuilding : MonoBehaviour
                     }
                     break;
             }
+            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
         }
     }
 
@@ -135,6 +139,7 @@ public class UpgradableBuilding : MonoBehaviour
                     }
                     break;
             }
+            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
         }
     }
     public void UpgradeLab() {
@@ -153,6 +158,7 @@ public class UpgradableBuilding : MonoBehaviour
                     }
                     break;
             }
+            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
         }
     }
 }
