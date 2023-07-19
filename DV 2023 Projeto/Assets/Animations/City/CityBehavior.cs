@@ -5,41 +5,40 @@ using UnityEngine.EventSystems;
 
 public class CityBehavior : MonoBehaviour
 {
-    private GameObject selection;
+    private GameObject previous;
+    private GameObject curHit;
+    private UpgradableBuilding opened;
     private RaycastHit raycastHit;
-
-    private void Start()
-    {
-       
-    }
 
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
         {
-            if (selection == null)
+            curHit = raycastHit.transform.gameObject;
+
+            if (previous == null)
             {
-                selection = raycastHit.transform.gameObject;
+                previous = curHit;
             }
 
             // Tratar das animações quando se passa por cima dos elementos da cidade
-            if(selection != raycastHit.transform.gameObject)
+            if(previous != curHit)
             {
-                if (raycastHit.transform.gameObject.TryGetComponent(out AnimatableOnHover _))
+                if (curHit.TryGetComponent(out AnimatableOnHover _))
                 {
-                    raycastHit.transform.gameObject.GetComponent<Animator>().SetBool("IsHovering", true);
+                    curHit.GetComponent<Animator>().SetBool("IsHovering", true);
                 }
-                if (selection.TryGetComponent(out AnimatableOnHover _))
+                if (previous.TryGetComponent(out AnimatableOnHover _))
                 {
-                    selection.GetComponent<Animator>().SetBool("IsHovering", false);
+                    previous.GetComponent<Animator>().SetBool("IsHovering", false);
                 }
             }
 
             // Tratar dos SFX quando se passa por cima dos elementos da cidade
-            if (raycastHit.transform.gameObject.TryGetComponent(out AudioSource audioSrc))
+            if (curHit.TryGetComponent(out AudioSource audioSrc))
             {
-                if (selection != raycastHit.transform.gameObject)
+                if (previous != curHit)
                 {
                     audioSrc.Play();
                 }
@@ -47,12 +46,13 @@ public class CityBehavior : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1"))
             {
-                if (raycastHit.transform.gameObject.TryGetComponent(out UpgradableBuilding building))
+                if (curHit.CompareTag("UpgradableBuilding"))
                 {
+                    opened = curHit.GetComponentInParent<UpgradableBuilding>();
+                    opened.OpenActionBox();
                 }
             }
-
-            selection = raycastHit.transform.gameObject;
+            previous = curHit;
         }
     }
 }

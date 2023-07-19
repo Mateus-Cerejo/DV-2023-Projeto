@@ -17,3 +17,13 @@ MonoBehaviour:
   - {fileID: 7171233017824985953, guid: cdcf3b4884147074899a377777768efe, type: 3}
   - {fileID: 4693064040622651561, guid: 836a724ca533f344381a4210c555fff8, type: 3}
   - {fileID: 3451065674371208702, guid: e591e598624d3d94dbc3bba08c17f09a, type: 3}
+  levelCosts:
+  - wood: 100
+    stone: 100
+    metal: 100
+  - wood: 200
+    stone: 150
+    metal: 100
+  upgradeText:
+  - Increases max population 1
+  - Increases max population 2

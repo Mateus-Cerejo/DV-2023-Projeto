@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 7649623933027292440}
   m_Layer: 0
   m_Name: farming-tileset_9 (1)
-  m_TagString: Untagged
+  m_TagString: UpgradableBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,8 +364,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.32000002, y: 0.32000008, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0.000000007450581}
+  m_Size: {x: 0.64, y: 0.64, z: 0.05}
+  m_Center: {x: 0.16, y: -0.15, z: 0.000000007450581}
 --- !u!1 &4926980509341127188
 GameObject:
   m_ObjectHideFlags: 0
