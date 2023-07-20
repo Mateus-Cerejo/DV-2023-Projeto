@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: c22fc89c831169a438afae7acadd6909, type: 3}
   itemRarity: 20
-  itemName: scrunptius
-  itemDescription: hhmmm yumi
+  itemName: m
+  itemDescription: m
   itemPrice: 4

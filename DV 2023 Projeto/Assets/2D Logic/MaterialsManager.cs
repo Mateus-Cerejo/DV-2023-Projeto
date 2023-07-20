@@ -13,12 +13,15 @@ public class MaterialsManager : MonoBehaviour
 
     private void Start()
     {
-        /*
-        wood = PlayerPrefs.GetInt("wood");
-        stone = PlayerPrefs.GetInt("stone");
-        metal = PlayerPrefs.GetInt("metal");
-        */
-        materials = new Materials(1000, 1000, 1000);
+        int initialWood = 10000;
+        int initialStone = 10000;
+        int initialMetal = 10000;
+
+        materials = new Materials(initialWood, initialStone, initialMetal);
+
+        materials.SetWood(PlayerPrefs.GetInt("wood", initialWood));
+        materials.SetStone(PlayerPrefs.GetInt("stone", initialStone));
+        materials.SetMetal(PlayerPrefs.GetInt("metal", initialMetal));
 
         woodLabel.SetText("" + materials.GetWood());
         stoneLabel.SetText("" + materials.GetStone());
@@ -42,17 +45,23 @@ public class MaterialsManager : MonoBehaviour
     {
         materials.SetWood(amount + materials.GetWood());
         woodLabel.SetText("" + materials.GetWood());
+
+        PlayerPrefs.SetInt("wood", materials.GetWood());
     }
 
     private void AddOrSubStone(int amount)
     {
         materials.SetStone(amount + materials.GetStone());
         stoneLabel.SetText("" + materials.GetStone());
+
+        PlayerPrefs.SetInt("stone", materials.GetStone());
     }
 
     private void AddOrSubMetal(int amount)
     {
         materials.SetMetal(amount + materials.GetMetal());
         metalLabel.SetText("" + materials.GetMetal());
+
+        PlayerPrefs.SetInt("metal", materials.GetMetal());
     }
 }

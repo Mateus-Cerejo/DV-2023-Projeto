@@ -16,7 +16,7 @@ public class Shop : MonoBehaviour
         
         foreach (ShopItemSO item in ChooseItemsRand())
         {
-            shopItem.GetComponent<ShopItemPreview>().SetUp(item.GetName(), item.GetSprite());
+            shopItem.GetComponent<ShopItemPreview>().SetUp(item);
             Instantiate(shopItem, grid);
         }
     }

@@ -14,7 +14,7 @@ public class UpgradableBuilding : MonoBehaviour
 
     private void Start()
     {
-        //curLevel = PlayerPrefs.GetInt("Hab1");
+        curLevel = PlayerPrefs.GetInt(gameObject.name, 0);
         building = Instantiate(levels.getLevels()[curLevel], transform.position, transform.rotation, transform);
     }
 
@@ -57,7 +57,7 @@ public class UpgradableBuilding : MonoBehaviour
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
+                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 100);
                     }
                     break;
             }
@@ -72,18 +72,20 @@ public class UpgradableBuilding : MonoBehaviour
             {
                 case 1:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
+                        PlayerPrefs.SetInt("marketNumOfItems", 3);
                     }
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
+                        PlayerPrefs.SetInt("marketNumOfItems", 5);
+                        PlayerPrefs.SetInt("marketDiscountPerc", PlayerPrefs.GetInt("marketDiscountPerc", 0) + 20);
                     }
                     break;
             }
             PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
         }
     }
+
     public void UpgradeHospital() {
         if (Upgrade())
         {
@@ -91,18 +93,19 @@ public class UpgradableBuilding : MonoBehaviour
             {
                 case 1:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
+                        PlayerPrefs.SetInt("revivingSpeedPerc", 25);
                     }
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
+                        PlayerPrefs.SetInt("revivingSpeedPerc", 50);
                     }
                     break;
             }
             PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
         }
     }
+
     public void UpgradeFactory() {
         if (Upgrade())
         {
@@ -110,12 +113,12 @@ public class UpgradableBuilding : MonoBehaviour
             {
                 case 1:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
+                        PlayerPrefs.SetInt("factoryNumOfItems", 3);
                     }
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
+                        PlayerPrefs.SetInt("factoryNumOfItems", 5);
                     }
                     break;
             }
@@ -130,18 +133,19 @@ public class UpgradableBuilding : MonoBehaviour
             {
                 case 1:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
+                        PlayerPrefs.SetInt("populationPerRound", PlayerPrefs.GetInt("populationPerRound", 0) + 50);
                     }
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
+                        PlayerPrefs.SetInt("populationPerRound", PlayerPrefs.GetInt("populationPerRound", 0) + 150);
                     }
                     break;
             }
             PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
         }
     }
+
     public void UpgradeLab() {
         if (Upgrade())
         {
@@ -149,12 +153,22 @@ public class UpgradableBuilding : MonoBehaviour
             {
                 case 1:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
+                        PlayerPrefs.SetInt("researchPerRound", PlayerPrefs.GetInt("researchPerRound", 0) + 5);
                     }
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
+                        PlayerPrefs.SetInt("researchPerRound", PlayerPrefs.GetInt("researchPerRound", 0) + 5);
+                    }
+                    break;
+                case 3:
+                    {
+                        PlayerPrefs.SetInt("researchPerRound", PlayerPrefs.GetInt("researchPerRound", 0) + 5);
+                    }
+                    break;
+                case 4:
+                    {
+                        PlayerPrefs.SetInt("researchPerRound", PlayerPrefs.GetInt("researchPerRound", 0) + 5);
                     }
                     break;
             }

@@ -18,12 +18,12 @@ MonoBehaviour:
   - {fileID: 2702610848922970636, guid: fcfcc022986e66e4d99eb505e4325dec, type: 3}
   - {fileID: 2702610848922970636, guid: fcfcc022986e66e4d99eb505e4325dec, type: 3}
   levelCosts:
-  - wood: 100
-    stone: 200
-    metal: 300
-  - wood: 222
-    stone: 111
-    metal: 333
+  - wood: 350
+    stone: 300
+    metal: 200
+  - wood: 350
+    stone: 350
+    metal: 350
   upgradeText:
   - Increases the velocity of cure's search
   - Increases the velocity of cure's search
