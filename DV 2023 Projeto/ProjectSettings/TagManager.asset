@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - MainCanvas
+  - Gate
+  - Enemy
   layers:
   - Default
   - TransparentFX
