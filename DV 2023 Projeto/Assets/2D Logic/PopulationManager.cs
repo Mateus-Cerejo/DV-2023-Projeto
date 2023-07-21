@@ -29,6 +29,7 @@ public class PopulationManager : MonoBehaviour
     private void Start()
     {
         curPopulation = PlayerPrefs.GetInt("curPopulation", 50);
+        maxPopulation = PlayerPrefs.GetInt("maxPopulation", 50);
         UpdateText();
     }
 

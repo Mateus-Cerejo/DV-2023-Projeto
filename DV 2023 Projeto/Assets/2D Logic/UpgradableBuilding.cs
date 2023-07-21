@@ -12,6 +12,7 @@ public class UpgradableBuilding : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(gameObject.name + PlayerPrefs.GetInt(gameObject.name, 0));
         curLevel = PlayerPrefs.GetInt(gameObject.name, 0);
         building = Instantiate(levels.getLevels()[curLevel], transform.position, transform.rotation, transform);
     }

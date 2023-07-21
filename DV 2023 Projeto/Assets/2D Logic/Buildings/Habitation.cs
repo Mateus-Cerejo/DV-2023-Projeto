@@ -19,13 +19,13 @@ public class Habitation : MonoBehaviour
             {
                 case 1:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
+                        PlayerPrefs.SetInt("maxPopulation", PlayerPrefs.GetInt("maxPopulation", 0) + 50);
                         PopulationManager.Instance.AddOrSubMaxPopulation(50);
                     }
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 100);
+                        PlayerPrefs.SetInt("maxPopulation", PlayerPrefs.GetInt("maxPopulation") + 100);
                         PopulationManager.Instance.AddOrSubMaxPopulation(100);
                     }
                     break;

@@ -11,22 +11,19 @@ public class ShopItemPreview : MonoBehaviour
     [SerializeField] private GameObject sprite;
 
     private ShopItemSO itemSO;
+    private ShopItemDetailed itemDetailed;
 
     public void SetUp(ShopItemSO itemSO)
     {
         this.itemSO = itemSO;
         nameText.text = itemSO.GetName();
         sprite.GetComponent<Image>().sprite = itemSO.GetSprite();
+        
     }
 
     public void OpenDetailedShopItem()
     {
-        detailedShopItem.GetComponent<ShopItemDetailed>().SetUp(itemSO);
-        detailedShopItem.SetActive(true);
-    }
-
-    private void OnMouseDown()
-    {
-        OpenDetailedShopItem();
+        itemDetailed = Instantiate(detailedShopItem, GameObject.FindGameObjectWithTag("MainCanvas").transform).GetComponent<ShopItemDetailed>();
+        itemDetailed.SetUp(itemSO);
     }
 }

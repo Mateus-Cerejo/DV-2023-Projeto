@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Factory : MonoBehaviour
 {
+    [SerializeField] private Shop shop;
+
     private UpgradableBuilding upgBuild;
 
     private void Start()
@@ -19,12 +21,14 @@ public class Factory : MonoBehaviour
             {
                 case 1:
                     {
-                        PlayerPrefs.SetInt("factoryNumOfItems", 3);
+                        PlayerPrefs.SetInt("FactoryNumOfItems", 3);
+                        shop.RefreshShop();
                     }
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("factoryNumOfItems", 5);
+                        PlayerPrefs.SetInt("FactoryNumOfItems", 5);
+                        shop.RefreshShop();
                     }
                     break;
             }

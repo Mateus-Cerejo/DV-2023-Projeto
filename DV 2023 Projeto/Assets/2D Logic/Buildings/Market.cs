@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Market : MonoBehaviour
 {
+    [SerializeField] private Shop shop;
+
     private UpgradableBuilding upgBuild;
 
     private void Start()
@@ -19,13 +21,15 @@ public class Market : MonoBehaviour
             {
                 case 1:
                     {
-                        PlayerPrefs.SetInt("marketNumOfItems", 3);
+                        PlayerPrefs.SetInt("MarketNumOfItems", 3);
+                        shop.RefreshShop();
                     }
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("marketNumOfItems", 5);
-                        PlayerPrefs.SetInt("marketDiscountPerc", PlayerPrefs.GetInt("marketDiscountPerc", 0) + 20);
+                        PlayerPrefs.SetInt("MarketNumOfItems", 5);
+                        PlayerPrefs.SetInt("MarketDiscountPerc", PlayerPrefs.GetInt("marketDiscountPerc", 0) + 20);
+                        shop.RefreshShop();
                     }
                     break;
             }

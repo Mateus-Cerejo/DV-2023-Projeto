@@ -9,11 +9,11 @@ public class ShopItemSO : ScriptableObject
     [SerializeField] private Rarity itemRarity;
     [SerializeField] private string itemName;
     [SerializeField] private string itemDescription;
-    [SerializeField] private float itemPrice;
+    [SerializeField] private int itemPrice;
 
     public Sprite GetSprite() { return itemSprite; }
     public string GetName() { return itemName; }
     public string GetDescription() { return itemDescription; }
-    public float GetPrice() { return itemPrice; }
+    public int GetPrice() { return itemPrice; }
     public Rarity GetRarity() { return itemRarity; }
 }

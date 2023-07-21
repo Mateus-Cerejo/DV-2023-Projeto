@@ -19,12 +19,12 @@ public class Hospital : MonoBehaviour
             {
                 case 1:
                     {
-                        PlayerPrefs.SetInt("revivingSpeedPerc", 25);
+                        PlayerPrefs.SetInt("revivingSpeedPerc", PlayerPrefs.GetInt("revivingSpeedPerc", 0) + 25);
                     }
                     break;
                 case 2:
                     {
-                        PlayerPrefs.SetInt("revivingSpeedPerc", 50);
+                        PlayerPrefs.SetInt("revivingSpeedPerc", PlayerPrefs.GetInt("revivingSpeedPerc",25) + 25);
                     }
                     break;
             }
