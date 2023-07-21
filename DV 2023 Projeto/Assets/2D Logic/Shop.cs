@@ -35,6 +35,11 @@ public class Shop : MonoBehaviour
         rightSide.SetActive(true);
     }
 
+    public void RefreshShop()
+    {
+        numOfItemsToDisplay = PlayerPrefs.GetInt("marketNumOfItems", 3);
+        items = ChooseItemsRand();
+    }
 
     private List<ShopItemSO> ChooseItemsRand()
     {

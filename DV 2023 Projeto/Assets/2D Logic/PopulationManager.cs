@@ -28,16 +28,24 @@ public class PopulationManager : MonoBehaviour
 
     private void Start()
     {
-        curPopulation = PlayerPrefs.GetInt("population", 50);
+        curPopulation = PlayerPrefs.GetInt("curPopulation", 50);
         UpdateText();
     }
 
-    private void AddOrSubPopulation(int amount)
+    public void AddOrSubCurPopulation(int amount)
     {
         curPopulation = Mathf.Clamp(curPopulation + amount, 0, maxPopulation);
         UpdateText();
 
-        PlayerPrefs.SetInt("population", curPopulation);
+        PlayerPrefs.SetInt("curPopulation", curPopulation);
+    }
+
+    public void AddOrSubMaxPopulation(int amount)
+    {
+        maxPopulation = Mathf.Clamp(maxPopulation + amount, 0, 9999);
+        UpdateText();
+
+        PlayerPrefs.SetInt("maxPopulation", maxPopulation);
     }
 
     private void UpdateText()

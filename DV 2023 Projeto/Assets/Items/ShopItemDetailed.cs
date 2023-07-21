@@ -45,6 +45,11 @@ public class ShopItemDetailed : MonoBehaviour
         }
     }
 
+    public void Buy()
+    {
+
+    }
+
     public void Close()
     {
         gameObject.SetActive(false);
