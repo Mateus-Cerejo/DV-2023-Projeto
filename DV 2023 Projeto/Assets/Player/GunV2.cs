@@ -49,7 +49,7 @@ public class GunV2 : MonoBehaviour
         if (allowButtonHold) shooting = Input.GetButton("Fire1");
         else shooting = Input.GetButtonDown("Fire1");
 
-        if(Input.GetButtonDown("Reload") && bulletsLeft < magazineSize && !reloading && maxAmmo>0) Reload();
+        if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && maxAmmo>0) Reload();
 
         if(readyToShoot && shooting && !reloading && bulletsLeft>0)
         {
