@@ -6,12 +6,24 @@ using UnityEngine.UI;
 
 public class ShopItemPreview : MonoBehaviour
 {
+    [SerializeField] private GameObject detailedShopItem;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private GameObject sprite;
 
-    public void SetUp(string name, Sprite sprite)
+    private ShopItemSO itemSO;
+    private ShopItemDetailed itemDetailed;
+
+    public void SetUp(ShopItemSO itemSO)
     {
-        nameText.text = name;
-        this.sprite.GetComponent<Image>().sprite = sprite;
+        this.itemSO = itemSO;
+        nameText.text = itemSO.GetName();
+        sprite.GetComponent<Image>().sprite = itemSO.GetSprite();
+        
+    }
+
+    public void OpenDetailedShopItem()
+    {
+        itemDetailed = Instantiate(detailedShopItem, GameObject.FindGameObjectWithTag("MainCanvas").transform).GetComponent<ShopItemDetailed>();
+        itemDetailed.SetUp(itemSO);
     }
 }

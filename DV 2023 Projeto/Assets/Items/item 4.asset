@@ -15,5 +15,5 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 931915d53d124114894b6a772ff78f87, type: 3}
   itemRarity: 10
   itemName: peeps
-  itemDescription: a lots of peeps
+  itemDescription: p
   itemPrice: 5

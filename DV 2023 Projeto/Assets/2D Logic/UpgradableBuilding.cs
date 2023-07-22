@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class UpgradableBuilding : MonoBehaviour
 {
@@ -14,7 +12,8 @@ public class UpgradableBuilding : MonoBehaviour
 
     private void Start()
     {
-        //curLevel = PlayerPrefs.GetInt("Hab1");
+        Debug.Log(gameObject.name + PlayerPrefs.GetInt(gameObject.name, 0));
+        curLevel = PlayerPrefs.GetInt(gameObject.name, 0);
         building = Instantiate(levels.getLevels()[curLevel], transform.position, transform.rotation, transform);
     }
 
@@ -25,6 +24,7 @@ public class UpgradableBuilding : MonoBehaviour
             if (playerResources.Buy(levels.getLevelCosts()[curLevel]))
             {
                 Destroy(building);
+                PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
                 building = Instantiate(levels.getLevels()[++curLevel], transform.position, transform.rotation, transform);
                 CloseActionBox();
                 return true;
@@ -44,121 +44,8 @@ public class UpgradableBuilding : MonoBehaviour
         actionBox.SetActive(false);
     }
 
-    public void UpgradeHabitation()
+    public int GetCurLevel()
     {
-        if (Upgrade())
-        {
-            switch (curLevel)
-            {
-                case 1:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
-                    }
-                    break;
-                case 2:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
-                    }
-                    break;
-            }
-            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
-        }
-    }
-
-    public void UpgradeMarket() {
-        if (Upgrade())
-        {
-            switch (curLevel)
-            {
-                case 1:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
-                    }
-                    break;
-                case 2:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
-                    }
-                    break;
-            }
-            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
-        }
-    }
-    public void UpgradeHospital() {
-        if (Upgrade())
-        {
-            switch (curLevel)
-            {
-                case 1:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
-                    }
-                    break;
-                case 2:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
-                    }
-                    break;
-            }
-            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
-        }
-    }
-    public void UpgradeFactory() {
-        if (Upgrade())
-        {
-            switch (curLevel)
-            {
-                case 1:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
-                    }
-                    break;
-                case 2:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
-                    }
-                    break;
-            }
-            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
-        }
-    }
-
-    public void UpgradeFarm() {
-        if (Upgrade())
-        {
-            switch (curLevel)
-            {
-                case 1:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
-                    }
-                    break;
-                case 2:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
-                    }
-                    break;
-            }
-            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
-        }
-    }
-    public void UpgradeLab() {
-        if (Upgrade())
-        {
-            switch (curLevel)
-            {
-                case 1:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax", 0) + 50);
-                    }
-                    break;
-                case 2:
-                    {
-                        PlayerPrefs.SetInt("populationMax", PlayerPrefs.GetInt("populationMax") + 50);
-                    }
-                    break;
-            }
-            PlayerPrefs.SetInt(gameObject.name, PlayerPrefs.GetInt(gameObject.name, 0) + 1);
-        }
+        return curLevel;
     }
 }

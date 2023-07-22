@@ -18,12 +18,12 @@ MonoBehaviour:
   - {fileID: 4606878497726750328, guid: 71b0988243472234fb1085559ac41a95, type: 3}
   - {fileID: 4606878497726750328, guid: 71b0988243472234fb1085559ac41a95, type: 3}
   levelCosts:
-  - wood: 300
+  - wood: 200
     stone: 200
     metal: 100
-  - wood: 200
-    stone: 300
-    metal: 10
+  - wood: 150
+    stone: 150
+    metal: 150
   upgradeText:
-  - Reduces the hero's reviving time 1
-  - Reduces the hero's reviving time 2
+  - Reduces the hero's reviving time
+  - Reduces the hero's reviving time

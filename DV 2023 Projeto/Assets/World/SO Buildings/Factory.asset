@@ -25,5 +25,5 @@ MonoBehaviour:
     stone: 290
     metal: 100
   upgradeText:
-  - Unlocks the productions of weapons.
-  - Better prices, more slots, and faster productions.
+  - Unlocks the production of weapons.
+  - Better prices, more weapons.

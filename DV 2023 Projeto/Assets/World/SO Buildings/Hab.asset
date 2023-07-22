@@ -20,10 +20,10 @@ MonoBehaviour:
   levelCosts:
   - wood: 100
     stone: 100
-    metal: 100
+    metal: 50
   - wood: 200
     stone: 150
     metal: 100
   upgradeText:
-  - Increases max population 1
-  - Increases max population 2
+  - Increases max population
+  - Increases max population

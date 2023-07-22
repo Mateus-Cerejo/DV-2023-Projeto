@@ -18,12 +18,12 @@ MonoBehaviour:
   - {fileID: 8556736151133703093, guid: 3be7d3c96c9d11f4b9b580611c0939b1, type: 3}
   - {fileID: 8556736151133703093, guid: 3be7d3c96c9d11f4b9b580611c0939b1, type: 3}
   levelCosts:
+  - wood: 200
+    stone: 200
+    metal: 100
   - wood: 100
     stone: 100
     metal: 100
-  - wood: 200
-    stone: 150
-    metal: 100
   upgradeText:
-  - Unlocks the market, where you can trade
-  - Better market
+  - Unlocks the market, where you can trade your materials
+  - Better prices, more items.
