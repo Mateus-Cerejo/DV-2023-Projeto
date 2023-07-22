@@ -7,6 +7,8 @@ TagManager:
   - MainCanvas
   - Gate
   - Enemy
+  - Obstacle
+  - Player1
   layers:
   - Default
   - TransparentFX
@@ -15,9 +17,9 @@ TagManager:
   - Water
   - UI
   - ScreenShot
-  - 
-  - 
-  - 
+  - Obstacle
+  - Player
+  - Player1
   - 
   - 
   - 

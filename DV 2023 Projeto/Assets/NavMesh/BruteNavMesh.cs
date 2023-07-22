@@ -10,22 +10,24 @@ public class BruteNavMesh : MonoBehaviour
     [SerializeField] private float stoppingDistance;    //distância para parar
 
     [SerializeField] private float lastAttackTime = 0;
-    private float attackCooldown = 3f; //segundos
-    private bool screaming = false;
-    [SerializeField] private bool attacking = false;
+    private float attackCooldown; //segundos
+    private bool screaming;
+    [SerializeField] private bool isAttacking;
 
-    [SerializeField] private float dist = 100; // APAGAR DEPOIS
+    [SerializeField] private float dist; // APAGAR DEPOIS
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
 
-    private void Awake()
+    private void Start()
     {
         targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        attackCooldown = 2f;
+        screaming = false;
+        isAttacking = false;
         navMeshAgent.avoidancePriority = 0;
-        StopEnemy();
     }
 
     private void Update()
@@ -39,13 +41,13 @@ public class BruteNavMesh : MonoBehaviour
         if (dist < stoppingDistance)
         {
             animator.SetBool("isRunning", false);
-            if ((Time.time - lastAttackTime >= attackCooldown) && !attacking)
+            if ((Time.time - lastAttackTime >= attackCooldown) && !isAttacking)
             {
                 lastAttackTime = Time.time;
                 Attack();
                 Debug.Log("Attack");
             }
-            else if (!attacking)
+            else if (!isAttacking)
             {
                 Debug.Log("Stop");
                 StopEnemy();
@@ -53,7 +55,7 @@ public class BruteNavMesh : MonoBehaviour
 
 
         }
-        else if (!screaming && !attacking)
+        else if (!screaming && !isAttacking)
         {
             Debug.Log("Chase");
             GoToTarget();
@@ -85,19 +87,22 @@ public class BruteNavMesh : MonoBehaviour
     {
         
         int attackType = Random.Range(0, 10);
-        animator.SetTrigger("attack");
+        animator.SetBool("isAttacking", true);
         animator.SetInteger("attackType", attackType);
+        isAttacking = true;
     }
 
     private void startAttack()
     {
-        attacking = true;      
+
         Debug.Log("Start Attack");
     }
 
     private void endAttack()
     {
-        attacking = false;
+        animator.SetBool("isAttacking", false);
+        isAttacking = false;
+        lastAttackTime = Time.time;
         Debug.Log("End Attack");
     }
 }
