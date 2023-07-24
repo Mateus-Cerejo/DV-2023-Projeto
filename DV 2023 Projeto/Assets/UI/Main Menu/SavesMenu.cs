@@ -33,7 +33,7 @@ public class SavesMenu : MonoBehaviour
     {
         saveOptions.SetActive(true);
     }
-
+    
     public void CreateNewSave()
     {
         string saveName = inputField.text;
@@ -53,11 +53,18 @@ public class SavesMenu : MonoBehaviour
         File.WriteAllText(SAVES_FOLDER + saveName + "/"+ saveName + ".txt", "TESTE");
 
         PlayerPrefs.SetString("save Directory", SAVES_FOLDER + saveName);
+
         SaveObject save = new SaveObject();
         save.Load();
         string inJSON = JsonUtility.ToJson(save);
         File.WriteAllText(PlayerPrefs.GetString("save Directory") + "/" + Path.GetFileName(PlayerPrefs.GetString("save Directory")) + ".txt", inJSON);
-        SceneManager.LoadScene("Main Scene");
+
+        SceneManager.LoadScene("City Scene");
+    }
+
+    private void OnEnable()
+    {
+        
     }
 
     public void DeleteSave(string saveName)

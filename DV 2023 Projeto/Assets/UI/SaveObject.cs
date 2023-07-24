@@ -6,6 +6,7 @@ public class SaveObject
 {
     public int populationPerRound;
     public int revivingSpeedPerc;
+    public int curResearchPerc;
     public int researchPerRound;
     public int marketNumOfItems;
     public int factoryNumOfItems;
@@ -33,6 +34,7 @@ public class SaveObject
     {
         populationPerRound = 10;
         revivingSpeedPerc = 0;
+        curResearchPerc = 0;
         researchPerRound = 3;
         marketNumOfItems = 0;
         factoryNumOfItems = 0;
@@ -61,6 +63,7 @@ public class SaveObject
     {
         populationPerRound = PlayerPrefs.GetInt("populationPerRound");
         revivingSpeedPerc = PlayerPrefs.GetInt("revivingSpeedPerc");
+        curResearchPerc = PlayerPrefs.GetInt("curResearchPerc");
         researchPerRound = PlayerPrefs.GetInt("researchPerRound");
         marketNumOfItems = PlayerPrefs.GetInt("MarketNumOfItems");
         factoryNumOfItems = PlayerPrefs.GetInt("FactoryNumOfItems");
@@ -89,6 +92,7 @@ public class SaveObject
     {
         PlayerPrefs.SetInt("populationPerRound", populationPerRound);
         PlayerPrefs.SetInt("revivingSpeedPerc", revivingSpeedPerc);
+        PlayerPrefs.SetInt("curResearchPerc", curResearchPerc);
         PlayerPrefs.SetInt("researchPerRound", researchPerRound);
         PlayerPrefs.SetInt("MarketNumOfItems", marketNumOfItems);
         PlayerPrefs.SetInt("FactoryNumOfItems", factoryNumOfItems);
