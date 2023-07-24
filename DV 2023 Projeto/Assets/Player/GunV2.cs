@@ -7,10 +7,11 @@ using TMPro;
 public class GunV2 : MonoBehaviour
 {
     [SerializeField] private float damage;
+    [SerializeField] private ArtifactBackPack abp;
     [SerializeField] private float fireRate, spread, range, reloadTime, burstFireTime;
-    [SerializeField] private int magazineSize, bulletsPerTap, maxAmmo;
+    [SerializeField] private int magazineSize, bulletsToShoot, maxAmmo;
     private int bulletsLeft, bulletsShot;
-    [SerializeField] private bool allowButtonHold;
+    [SerializeField] private bool allowButtonHold, isShotgun;
 
     private bool shooting, readyToShoot, reloading;
 
@@ -19,13 +20,14 @@ public class GunV2 : MonoBehaviour
     [SerializeField] private RaycastHit rayHit;
     [SerializeField] private LayerMask enemyLayer;
 
-    [SerializeField] private GameObject muzzleFlash,bulletHoleGraphic;
+    [SerializeField] private GameObject muzzleFlash, bulletHoleGraphic, enemyHitGraphic;
+    [SerializeField] private Transform muzzleFlashPosition;
     [SerializeField] private TextMeshProUGUI ammoCounter;
     [SerializeField] private Image reloadRadialImage;
     private float reloadProgress = 0f;
 
     void OnEnable() {
-        ammoCounter.text = gameObject.name+":\n"+bulletsLeft+"/"+maxAmmo;
+        ammoCounter.text = gameObject.name+":"+bulletsLeft+"/"+maxAmmo;
     }
 
     private void Start()
@@ -41,7 +43,7 @@ public class GunV2 : MonoBehaviour
         MyInput();
         UpdateReloadIndicator();
         if(bulletsLeft<0) bulletsLeft = 0;
-        ammoCounter.text = gameObject.name+":\n"+bulletsLeft+"/"+maxAmmo;
+        ammoCounter.text = gameObject.name+":"+bulletsLeft+"/"+maxAmmo;
     }
 
     private void MyInput()
@@ -49,11 +51,11 @@ public class GunV2 : MonoBehaviour
         if (allowButtonHold) shooting = Input.GetButton("Fire1");
         else shooting = Input.GetButtonDown("Fire1");
 
-        if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && maxAmmo>0) Reload();
+        if(Input.GetButtonDown("Reload") && bulletsLeft < magazineSize && !reloading && maxAmmo>0) Reload();
 
         if(readyToShoot && shooting && !reloading && bulletsLeft>0)
         {
-            bulletsShot = bulletsPerTap;
+            bulletsShot = bulletsToShoot;
             Shoot();
         }
 
@@ -63,27 +65,102 @@ public class GunV2 : MonoBehaviour
     {
         readyToShoot = false;
 
-        float x = Random.Range(-spread,spread);
-        float y = Random.Range(-spread,spread);
-
-        Vector3 direction = fpsCam.transform.forward + new Vector3(x,y,0);
-
-        if(Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range))
+        if(isShotgun)
         {
-            Debug.Log(rayHit.collider.name);
+            Destroy(Instantiate(muzzleFlash, muzzleFlashPosition.position, attackPoint.rotation), 0.1f);
+            for (int i = 0; i < bulletsToShoot; i++)
+            {
+                Vector3 targetPosition = fpsCam.transform.position + fpsCam.transform.forward * range;
 
-            if(rayHit.collider.CompareTag("Enemy")) rayHit.collider.GetComponent<Enemy>().TakeDamage(damage);
+                // Calculate horizontal spread within the XZ plane
+                float xSpread = Random.Range(-spread, spread);
+                float ySpread = Random.Range(-spread, spread);
+                float zSpread = Random.Range(-spread, spread);
+
+                // Apply horizontal spread to the target position
+                targetPosition = new Vector3(
+                    targetPosition.x + xSpread,
+                    targetPosition.y + ySpread, // Keep the y-position unchanged for horizontal spread
+                    targetPosition.z + zSpread
+                );
+
+                // Calculate the direction from the camera position to the modified target position
+                Vector3 direction = direction = targetPosition - fpsCam.transform.position;
+
+                GameObject instantiatedMuzzleFlash = Instantiate(muzzleFlash, muzzleFlashPosition.position, attackPoint.rotation);
+                instantiatedMuzzleFlash.transform.parent = muzzleFlashPosition; // Set the gun barrel as the parent
+                Destroy(instantiatedMuzzleFlash, 0.1f);
+
+                // Create a layer mask to ignore the player layer
+                int layerMask = 31 << LayerMask.NameToLayer("Player");
+                layerMask = ~layerMask; // Invert the layer mask to exclude the player layer
+
+                if (Physics.Raycast(fpsCam.transform.position, direction.normalized, out rayHit, range))
+                {
+                    Debug.Log(rayHit.collider.name);
+
+                    if (rayHit.collider.CompareTag("Enemy"))
+                    {
+                        rayHit.collider.GetComponent<Enemy>().TakeDamage(damage + damage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + damage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+                        Destroy(Instantiate(enemyHitGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal)), 1.0f);
+                    }
+                    else
+                    {
+                        Destroy(Instantiate(bulletHoleGraphic, rayHit.point, Camera.main.transform.rotation), 0.5f);
+                    }
+                }
+                bulletsShot--;
+            }
         }
+        else
+        {
+            Vector3 targetPosition = fpsCam.transform.position + fpsCam.transform.forward * range;
 
-        Destroy(Instantiate(muzzleFlash,attackPoint.position,Quaternion.identity),0.5f);
-        Destroy(Instantiate(bulletHoleGraphic,rayHit.point,Quaternion.LookRotation(rayHit.normal)),0.5f);
+            // Calculate horizontal spread within the XZ plane
+            float xSpread = Random.Range(-spread, spread);
+            float ySpread = Random.Range(-spread, spread);
+            float zSpread = Random.Range(-spread, spread);
 
+            // Apply horizontal spread to the target position
+            targetPosition = new Vector3(
+                targetPosition.x + xSpread,
+                targetPosition.y + ySpread, // Keep the y-position unchanged for horizontal spread
+                targetPosition.z + zSpread
+            );
+
+            // Calculate the direction from the camera position to the modified target position
+            Vector3 direction = direction = targetPosition - fpsCam.transform.position;
+
+            GameObject instantiatedMuzzleFlash = Instantiate(muzzleFlash, muzzleFlashPosition.position, attackPoint.rotation);
+            instantiatedMuzzleFlash.transform.parent = muzzleFlashPosition; // Set the gun barrel as the parent
+            Destroy(instantiatedMuzzleFlash,0.1f);
+
+            // Create a layer mask to ignore the player layer
+            int layerMask = 31 << LayerMask.NameToLayer("Player");
+            layerMask = ~layerMask; // Invert the layer mask to exclude the player layer
+
+            if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, layerMask))
+            {
+                Debug.Log(rayHit.collider.name);
+
+                if (rayHit.collider.CompareTag("Enemy"))
+                {
+                    rayHit.collider.GetComponent<Enemy>().TakeDamage(damage + damage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + damage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+                    Destroy(Instantiate(enemyHitGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal)), 1.0f);
+                }
+                else
+                {
+                    Destroy(Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal)), 0.5f);
+                }
+            }
+            bulletsShot--;
+        }
+        
         bulletsLeft--;
-        bulletsShot--;
 
-        Invoke("ResetShoot",fireRate/100);
+        Invoke("ResetShoot",1/fireRate);
 
-        if(bulletsShot>0 && bulletsLeft>0) Invoke("Shoot",burstFireTime/100);
+        if(bulletsShot>0 && bulletsLeft>0) Invoke("Shoot",1/burstFireTime);
     }
 
     private void ResetShoot()

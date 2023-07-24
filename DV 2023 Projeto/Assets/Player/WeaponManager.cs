@@ -7,15 +7,14 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GunV2[] rangedWeapons;
     [SerializeField] private PlayerMeleeSystem[] meleeWeapons;
 
-    [SerializeField] private int currentRangedIndex = 0;
-    [SerializeField] private int currentMeleeIndex = 0;
+    [SerializeField] private WeaponManagerIndex wmi;
 
     private void Start()
     {
         // Make sure to assign the appropriate scripts to the public variables
         // You can do this in the Inspector by dragging the corresponding GameObjects with the scripts attached.
 
-        EnableRangedWeapon(currentRangedIndex);
+        EnableRangedWeapon(wmi.currentRangedIndex);
     }
 
     private void Update()
@@ -29,12 +28,12 @@ public class WeaponManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 // Switch to melee weapon
-                EnableMeleeWeapon(currentMeleeIndex);
+                EnableMeleeWeapon(wmi.currentMeleeIndex);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 // Switch to ranged weapon
-                EnableRangedWeapon(currentRangedIndex);
+                EnableRangedWeapon(wmi.currentRangedIndex);
             }
         }
     }
@@ -73,26 +72,26 @@ public class WeaponManager : MonoBehaviour
     {
         if(i < rangedWeapons.Length)
         {
-            currentRangedIndex=i;
+            wmi.currentRangedIndex=i;
         }
     }
 
     public int GetCurrentRangedWeapon()
     {
-        return currentRangedIndex;
+        return wmi.currentRangedIndex;
     }
 
     public void SetMeleeWeapon(int i)
     {
         if(i < meleeWeapons.Length)
         {
-            currentMeleeIndex=i;
+            wmi.currentMeleeIndex=i;
         }
     }
 
     public int GetCurrentMeleeWeapon()
     {
-        return currentMeleeIndex;
+        return wmi.currentMeleeIndex;
 
     }
 }

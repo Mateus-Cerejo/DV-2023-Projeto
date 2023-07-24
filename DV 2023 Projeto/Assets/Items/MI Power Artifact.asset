@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e8bca7a0042ed49b5de797f68466cb, type: 3}
   m_Name: MI Power Artifact
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 4b37281d45debcd4bb194f5c5f1a7ccd, type: 3}
   itemRarity: 45
   itemName: Power artifact
   itemDescription: Increases player power by 10%

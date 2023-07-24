@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1557648533933088924}
   - component: {fileID: 1557648533933088927}
   - component: {fileID: 1557648533933088926}
-  - component: {fileID: 1557648533933088897}
   - component: {fileID: 1557648533933088922}
-  m_Layer: 6
+  - component: {fileID: 1557648533933088897}
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -100,6 +100,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1557648533933088922
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557648533933088896}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!114 &1557648533933088897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,19 +129,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
---- !u!54 &1557648533933088922
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1557648533933088896}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  movementSpeed: 7.5
+  artifacts:
+  - {fileID: 7282188304968689986, guid: 19dfe2b4605b0294193d92e1f58f1cb0, type: 3}
+  - {fileID: 6773097196735638427, guid: 92a713661cd9edb4d9fedd7cdf26a91c, type: 3}
+  - {fileID: 6996194118285977495, guid: 2baa6dfd17a4c194fb793c28226ec22d, type: 3}
+  - {fileID: 610090460724746129, guid: 32c44357db1416a4581a17f05443e23a, type: 3}
+  - {fileID: 5251416897247643183, guid: 365c7bd0ebcd18d4581c27ecc9fadee6, type: 3}
+  - {fileID: 3924759465021042556, guid: 23524e75819846b4f903f1c8117ad300, type: 3}
+  abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}

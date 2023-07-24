@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e8bca7a0042ed49b5de797f68466cb, type: 3}
   m_Name: MI Speed Artifact
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 9861296d280f9fe41bfd9282016049a9, type: 3}
   itemRarity: 45
   itemName: Speed artifact
   itemDescription: Increases player speed by 10%

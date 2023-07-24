@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField] private ArtifactBackPack abp;
     [SerializeField] private float maxHealth = 100.0f;
     private float currentHealth;
     [SerializeField] private float chipSpeed = 2f;
@@ -15,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        maxHealth += maxHealth * abp.lifeArtifactQuantityEquiped * abp.lifeArtifactEffect + maxHealth * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect;
         currentHealth = maxHealth;
     }
 

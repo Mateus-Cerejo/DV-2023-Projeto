@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e8bca7a0042ed49b5de797f68466cb, type: 3}
   m_Name: MI Ice Aura Artifact
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: b92340cfd5780e342973cac136e4cc47, type: 3}
   itemRarity: 10
   itemName: Ice Aura artifact
   itemDescription: Slows down targets
