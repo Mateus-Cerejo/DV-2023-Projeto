@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6bd6c474d0321243ae9ccaed9678291, type: 3}
+  m_Name: ArtifactBackPack
+  m_EditorClassIdentifier: 
+  _artifactEquipLimit: 4
+  _powerArtifactQuantityStored: 1
+  _powerArtifactQuantityEquiped: 0
+  _powerArtifactEffect: 20
+  _speedArtifactQuantityStored: 4
+  _speedArtifactQuantityEquiped: 0
+  _speedArtifactEffect: 20
+  _lifeArtifactQuantityStored: 4
+  _lifeArtifactQuantityEquiped: 0
+  _lifeArtifactEffect: 20
+  _looterArtifactQuantityStored: 2
+  _looterArtifactQuantityEquiped: 0
+  _looterArtifactEffect: 20
+  _allInOneArtifactQuantityStored: 1
+  _allInOneArtifactQuantityEquiped: 0
+  _allInOneArtifactEffect: 20
+  _iceAuraArtifactQuantityStored: 0
+  _iceAuraArtifactQuantityEquiped: 1
+  _iceAuraArtifactEffect: 10
+  _iceAuraArtifactDuration: 2

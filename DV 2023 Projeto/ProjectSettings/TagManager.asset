@@ -7,14 +7,22 @@ TagManager:
   - MainCanvas
   - UpgradableBuilding
   - Focus
+  - Gun
+  - Artifact
+  - FxTemporaire
+  - Enemy
+  - ItemPopup
+  - Gate
+  - Obstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - ScreenShot
+  - Enemy
   - 
   - 
   - 
@@ -38,8 +46,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Player
   m_SortingLayers:
   - name: Default
     uniqueID: 0
