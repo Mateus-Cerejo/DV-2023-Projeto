@@ -6,86 +6,105 @@ using UnityEngine.Animations.Rigging;
 
 public class BruteNavMesh : MonoBehaviour
 {
-    [SerializeField] private Transform targetTransform; //
-    [SerializeField] private float stoppingDistance;    //distância para parar
+    private NavMeshAgent navMeshAgent;
+    [SerializeField] private Transform mainTargetTransform;
+    [SerializeField] private Transform currentTargetTransform;
+
+    [SerializeField] private GameEvents gameEvents;
+
+    private Animator animator;
+
+    [SerializeField] private bool isScreaming;
+
+    [SerializeField] private bool isAttacking;
+    [SerializeField] private float dist;
+    [SerializeField] private Vector3 curVelocity;
+    [SerializeField] private float delay;
 
     [SerializeField] private float lastAttackTime = 0;
-    private float attackCooldown; //segundos
-    private bool screaming;
-    [SerializeField] private bool isAttacking;
-
-    [SerializeField] private float dist; // APAGAR DEPOIS
-
-    private NavMeshAgent navMeshAgent;
-    private Animator animator;
+    [SerializeField] private float attackCooldown; //segundos
+    [SerializeField] private float stoppingDistance;
 
     private void Start()
     {
-        targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        mainTargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        currentTargetTransform = mainTargetTransform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         attackCooldown = 2f;
-        screaming = false;
+        isScreaming = true;
         isAttacking = false;
         navMeshAgent.avoidancePriority = 0;
+
+        gameEvents.OnPlayerDeath += OnPlayerDeath;
+        gameEvents.OnPlayerRessurection += OnPlayerRessurection;
     }
 
     private void Update()
     {
-        dist = Vector3.Distance(transform.position, targetTransform.position);
-        Debug.Log("Distance" + dist);
-        Debug.Log("Velocity" + navMeshAgent.velocity);
+        dist = Vector3.Distance(transform.position, currentTargetTransform.position);
+        //Debug.Log("Distance" + dist);
+        //Debug.Log("Velocity" + navMeshAgent.velocity);
 
-        Debug.Log("CooldownTimer" + (Time.time - lastAttackTime));
+        //Debug.Log("CooldownTimer" + (Time.time - lastAttackTime));
 
-        if (dist < stoppingDistance)
+        
+
+        if (dist <= stoppingDistance)
         {
             animator.SetBool("isRunning", false);
             if ((Time.time - lastAttackTime >= attackCooldown) && !isAttacking)
             {
                 lastAttackTime = Time.time;
                 Attack();
-                Debug.Log("Attack");
+                //Debug.Log("Attack");
             }
             else if (!isAttacking)
             {
-                Debug.Log("Stop");
-                StopEnemy();
+                //Debug.Log("Stop");
+                Stop();
             }
 
 
         }
-        else if (!screaming && !isAttacking)
+        else if (!isScreaming && !isAttacking)
         {
-            Debug.Log("Chase");
-            GoToTarget();
+            //Debug.Log("Chase");
+            Chase();
         }
         //navMeshAgent.destination = targetTransform.position;
     }
-    /*
-    private void LateUpdate()
-    {
-        float dist = Vector3.Distance(transform.position, targetTransform.position);
-    }
-    */
 
-    private void StopEnemy()
+
+    private void Stop()
     {
-        navMeshAgent.isStopped = true;
         navMeshAgent.velocity = Vector3.zero;
-        transform.LookAt(targetTransform);
+        navMeshAgent.isStopped = true;
+
+        // Calculate the direction to face without tilting
+        Vector3 targetDirection = currentTargetTransform.position - transform.position;
+        targetDirection.y = 0f;
+
+        // Use Quaternion.LookRotation to face the target direction
+        if (targetDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            transform.rotation = targetRotation;
+        }
     }
 
-    private void GoToTarget()
+    private void Chase()
     {
         navMeshAgent.isStopped = false;
-        navMeshAgent.SetDestination(targetTransform.position);
+        navMeshAgent.SetDestination(currentTargetTransform.position);
         animator.SetBool("isRunning", true);
     }
 
     private void Attack()
     {
-        
+        navMeshAgent.velocity = Vector3.zero;
+        navMeshAgent.isStopped = true;
+
         int attackType = Random.Range(0, 10);
         animator.SetBool("isAttacking", true);
         animator.SetInteger("attackType", attackType);
@@ -104,5 +123,21 @@ public class BruteNavMesh : MonoBehaviour
         isAttacking = false;
         lastAttackTime = Time.time;
         Debug.Log("End Attack");
+    }
+
+
+    private void stopScreaming()
+    {
+        isScreaming = false;
+    }
+
+    private void OnPlayerDeath()
+    {
+        currentTargetTransform = GameObject.FindGameObjectWithTag("Gate").transform;
+    }
+
+    private void OnPlayerRessurection()
+    {
+        currentTargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 }
