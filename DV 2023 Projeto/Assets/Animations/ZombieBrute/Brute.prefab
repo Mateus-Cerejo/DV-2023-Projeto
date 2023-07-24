@@ -960,10 +960,10 @@ GameObject:
   - component: {fileID: 1338980422558883889}
   - component: {fileID: 4469111800986009798}
   - component: {fileID: 7385859690126106187}
-  - component: {fileID: 3758553934858172266}
+  - component: {fileID: 2472812378227291523}
   m_Layer: 0
   m_Name: Brute
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1040,11 +1040,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007b68f33c11b564f9116846f1d9bb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 0}
-  stoppingDistance: 0
-  lastAttackTime: 0
-  attacking: 0
+  mainTargetTransform: {fileID: 0}
+  currentTargetTransform: {fileID: 0}
+  gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
+  isScreaming: 0
+  isAttacking: 0
   dist: 100
+  curVelocity: {x: 0, y: 0, z: 0}
+  delay: 0
+  lastAttackTime: 0
+  attackCooldown: 0
+  stoppingDistance: 3
 --- !u!65 &7385859690126106187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1058,7 +1064,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2.5303164, z: 1.5}
   m_Center: {x: 0, y: 0.7651579, z: 0}
---- !u!114 &3758553934858172266
+--- !u!114 &2472812378227291523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1067,9 +1073,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2466428288513168247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b2e13868ed9b3442bbfc586b98a6c49, type: 3}
+  m_Script: {fileID: 11500000, guid: d9bbaa8240b9ed6428b08d63a28e40dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
+  curHealth: 500
+  zombiesCount: 5
 --- !u!1 &3117853270489155078
 GameObject:
   m_ObjectHideFlags: 0

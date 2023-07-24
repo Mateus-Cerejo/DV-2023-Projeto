@@ -1153,6 +1153,7 @@ GameObject:
   - component: {fileID: 2175022690342257771}
   - component: {fileID: 579632016835314869}
   - component: {fileID: 100998625080990300}
+  - component: {fileID: 1762081253426017406}
   m_Layer: 0
   m_Name: Zombie2_Pre
   m_TagString: Enemy
@@ -1247,11 +1248,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7db88aa5a51e4c43b1dd7b8415fa868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTargetTransform: {fileID: 0}
+  mainTarget: {fileID: 0}
   currentTargetTransform: {fileID: 0}
+  gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
   fov: {fileID: 0}
   isAttacking: 0
   dist: 0
+  curVelocity: {x: 0, y: 0, z: 0}
   delay: 0
   lastAttackTime: 0
   attackCooldown: 0
@@ -1276,6 +1279,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   visibleTargets: []
+--- !u!114 &1762081253426017406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5309023616893845077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185abbba1b26cca4d87eee4112ed516e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
+  curHealth: 100
+  zombiesCount: 1
 --- !u!1 &5361844957919059214
 GameObject:
   m_ObjectHideFlags: 0
