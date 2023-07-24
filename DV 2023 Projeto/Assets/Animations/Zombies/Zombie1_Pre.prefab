@@ -1321,8 +1321,9 @@ GameObject:
   - component: {fileID: 6596435624129839817}
   - component: {fileID: 469014968442286500}
   - component: {fileID: 8745243811382746762}
-  - component: {fileID: 31400533304999028}
   - component: {fileID: 8891093192686243652}
+  - component: {fileID: 719806915086452018}
+  - component: {fileID: 1677317475246841974}
   m_Layer: 0
   m_Name: Zombie1_Pre
   m_TagString: Enemy
@@ -1403,22 +1404,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.6518369, z: 1}
   m_Center: {x: 0, y: 0.8259187, z: 0}
---- !u!54 &31400533304999028
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6289935014268221905}
-  serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &8891093192686243652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1431,12 +1416,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7db88aa5a51e4c43b1dd7b8415fa868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTargetTransform: {fileID: 0}
+  mainTarget: {fileID: 0}
+  currentTargetTransform: {fileID: 0}
+  gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
+  fov: {fileID: 0}
   isAttacking: 0
   dist: 0
+  curVelocity: {x: 0, y: 0, z: 0}
+  delay: 0
   lastAttackTime: 0
   attackCooldown: 0
   stoppingDistance: 0
+--- !u!114 &719806915086452018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289935014268221905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185abbba1b26cca4d87eee4112ed516e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
+  curHealth: 150
+  zombiesCount: 1
+--- !u!114 &1677317475246841974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289935014268221905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47e67fb8d2b44045b9d60ffe4043248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 11
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  visibleTargets: []
 --- !u!1 &6454816308074366662
 GameObject:
   m_ObjectHideFlags: 0

@@ -159,6 +159,10 @@ MonoBehaviour:
   - {fileID: 4537282709454690423}
   - {fileID: 4537282708923436753}
   - {fileID: 4537282709749535489}
+  zombiesCountText: {fileID: 4537282709348937836}
+  pillsCountText: {fileID: 4537282709666396545}
+  populationCountText: {fileID: 4537282710510565805}
+  dayNumberText: {fileID: 4537282710665788299}
 --- !u!1 &4537282709348937838
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4537282709454690420
 RectTransform:
   m_ObjectHideFlags: 0
