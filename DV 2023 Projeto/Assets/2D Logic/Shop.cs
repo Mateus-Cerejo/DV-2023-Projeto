@@ -53,7 +53,7 @@ public class Shop : MonoBehaviour
             foreach (ShopItemSO item in ChooseItemsRand())
             {
                 GameObject preview = Instantiate(shopItem, grid);
-                preview.GetComponent<ShopItemPreview>().SetUp(item);
+                preview.GetComponent<ShopItemPreview>().SetUp(item, type);
                 previews.Add(preview);
             }
         }
@@ -64,7 +64,7 @@ public class Shop : MonoBehaviour
             {
                 Debug.Log(int.Parse(itemIndex));
                 GameObject preview = Instantiate(shopItem, grid);
-                preview.GetComponent<ShopItemPreview>().SetUp(items[int.Parse(itemIndex)]);
+                preview.GetComponent<ShopItemPreview>().SetUp(items[int.Parse(itemIndex)], type);
                 previews.Add(preview);
             }
         }

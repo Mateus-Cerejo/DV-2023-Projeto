@@ -51,6 +51,6 @@ public class PopulationManager : MonoBehaviour
 
     private void UpdateText()
     {
-        populationText.SetText(curPopulation + " / " + maxPopulation);
+        populationText.SetText(curPopulation + "/" + maxPopulation);
     }
 }

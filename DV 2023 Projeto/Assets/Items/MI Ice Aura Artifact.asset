@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e8bca7a0042ed49b5de797f68466cb, type: 3}
+  m_Name: MI Ice Aura Artifact
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 0}
+  itemRarity: 10
+  itemName: Ice Aura artifact
+  itemDescription: Slows down targets
+  itemPrice:
+    wood: 0
+    stone: 0
+    metal: 0
+    pills: 150

@@ -9,17 +9,25 @@ public class ShopItemDetailed : MonoBehaviour
     [SerializeField] private GameObject spriteBG;
     [SerializeField] private GameObject sprite;
     [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private TextMeshProUGUI costText;
+
+    [SerializeField] private TextMeshProUGUI woodCostText;
+    [SerializeField] private TextMeshProUGUI stoneCostText;
+    [SerializeField] private TextMeshProUGUI metalCostText;
+    [SerializeField] private TextMeshProUGUI pillsCostText;
+
     [SerializeField] private TextMeshProUGUI detailsText;
     [SerializeField] private GameObject errorBuying;
 
     private ShopItemSO itemSO;
+    private string type;
     private Color commun = new Color(188 / 255f, 188 / 255f, 188 / 255f);
     private Color rare = new Color(92 / 255f, 188/255f, 255/255f);
     private Color epic = new Color(161 / 255f, 92 / 255f, 255 / 255f);
     private Color legendary = new Color(255 / 255f, 223 / 255f, 92 / 255f);
-    public void SetUp(ShopItemSO itemSO)
+
+    public void SetUp(ShopItemSO itemSO, string type)
     {
+        this.type = type;
         this.itemSO = itemSO;
         nameText.text = this.itemSO.GetName();
         sprite.GetComponent<Image>().sprite = this.itemSO.GetSprite();
@@ -56,21 +64,24 @@ public class ShopItemDetailed : MonoBehaviour
                 break;
         }
 
-        costText.text = itemSO.GetPrice() + "\nEach";
+        woodCostText.text = itemSO.GetPriceWithDiscount(type).GetWood() + "";
+        stoneCostText.text = itemSO.GetPriceWithDiscount(type).GetStone() + "";
+        metalCostText.text = itemSO.GetPriceWithDiscount(type).GetMetal() + "";
+        pillsCostText.text = itemSO.GetPriceWithDiscount(type).GetPills() + "";
 
         detailsText.text = itemSO.GetDescription();
     }
 
     public void Buy()
     {
-        if (MaterialsManager.Instance.Buy(new Materials(0, 0, 0, itemSO.GetPrice())))
+        if (MaterialsManager.Instance.Buy(itemSO.GetPriceWithDiscount(type)))
         {
             Destroy(gameObject);
         }
         else
         {
             GameObject instance = Instantiate(errorBuying);
-            instance.GetComponent<TextMeshProUGUI>().SetText("You don't have enough pills");
+            instance.GetComponent<TextMeshProUGUI>().SetText("You don't have enough materials");
             instance.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform, false);
             Destroy(instance, 2);
         }
