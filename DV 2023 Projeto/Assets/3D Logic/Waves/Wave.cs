@@ -30,11 +30,8 @@ public class Wave
     public List<Transform> SpawnEnemies()
     {
         List<Transform> spawnedEnemies = new List<Transform>();
-        int enemyID;
 
         for (int i = 0; i<nSpawnPerGroup; i++ ){
-            enemyID = Random.Range(0, zombies.Length);
-            Debug.Log("Getting enemy:" + i);
             if(enemyCount < maxEnemiesAllowed && enemyCount < enemiesLeft)
             {
                 
@@ -53,12 +50,12 @@ public class Wave
     {
         Debug.Log("SetStats of wave: " + waveNumber);
         waveNumber = (waveNumber == 0) ? 1 : waveNumber;
-        initEnemyAmount = 10 + (waveNumber * 5)/2;
+        initEnemyAmount = 10 + (waveNumber * 8)/2;
         enemiesLeft = initEnemyAmount;
         enemyCount = 0;
         maxEnemiesAllowed = 5 + waveNumber;
-        nSpawnPerGroup = 2 + waveNumber/2;
-        totalBosses = initEnemyAmount / 20;
+        nSpawnPerGroup = 2 + waveNumber/3;
+        totalBosses = initEnemyAmount / 25;
         bossesLeft = totalBosses;
     }
 

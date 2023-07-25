@@ -34,8 +34,8 @@ public class FieldOfView : MonoBehaviour
         Collider[] obstacleTargets = Physics.OverlapSphere(transform.position, viewRadius, obstacleMask);
         Collider[] playerTargets = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
 
-        Debug.Log(obstacleTargets.Length);
-        Debug.Log(playerTargets.Length);
+        Debug.Log("Obstacles "+ obstacleTargets.Length);
+        Debug.Log("Players "+ playerTargets.Length);
 
 
         string infoMessage = "";
