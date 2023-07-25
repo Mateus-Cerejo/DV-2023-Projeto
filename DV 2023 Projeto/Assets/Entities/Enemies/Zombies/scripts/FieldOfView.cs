@@ -34,8 +34,8 @@ public class FieldOfView : MonoBehaviour
         Collider[] obstacleTargets = Physics.OverlapSphere(transform.position, viewRadius, obstacleMask);
         Collider[] playerTargets = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
 
-        Debug.Log(obstacleTargets.Length);
-        Debug.Log(playerTargets.Length);
+        Debug.Log("Obstacles "+ obstacleTargets.Length);
+        Debug.Log("Players "+ playerTargets.Length);
 
 
         string infoMessage = "";
@@ -67,23 +67,33 @@ public class FieldOfView : MonoBehaviour
         {
             infoMessage += "Há " + obstacleTargets.Length + " obstáculos à vista";
 
+            float minDistance = 50;
+            Transform chosenTargetTransform = null;
+
             if (playerTargets.Length != 0 && playerTargets != null)
             {
                 visibleTargets.Add(playerTargets[0].transform);
                 infoMessage += "Há " + playerTargets.Length + " jogadores à vista";
-            }
 
-            float minDistance = 50;
-            Transform chosenTargetTransform = null;
+                Transform target = playerTargets[0].transform;
+                Vector3 dirToTarget = (target.position - transform.position).normalized;
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                if (distanceToTarget < minDistance / 2)
+                {
+                    minDistance = distanceToTarget;
+                    chosenTargetTransform = target;
+                }
+            }
+            
 
             for (int i = 0; i < obstacleTargets.Length; i++)
             {
                 Transform target = obstacleTargets[i].transform;
                 Vector3 dirToTarget = (target.position - transform.position).normalized;
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
-                //if (!Physics.Raycast(transform.position, dirToTarget, distanceToTarget, obstacleMask))
-                //{
-                if (distanceToTarget < minDistance)
+
+                if (distanceToTarget < minDistance && chosenTargetTransform == null)
                 {
                     minDistance = distanceToTarget;
                     chosenTargetTransform = target;

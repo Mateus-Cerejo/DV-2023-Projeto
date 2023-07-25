@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1879151946085384956}
   - component: {fileID: 1879151946085384957}
   - component: {fileID: 1879151946085384958}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DeathMenuGUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 1879151946479775194}
   - component: {fileID: 1879151946479775196}
   - component: {fileID: 1879151946479775197}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: RespawnMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,6 @@ MonoBehaviour:
   frontHealthBar: {fileID: 3561293124558268714}
   backHealthBar: {fileID: 195379436434714533}
   gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
-  playerCharacter: {fileID: 0}
 --- !u!114 &4109130220269337090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1879151946670772440}
   abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}
-  runningSpeed: 6
+  runningSpeed: 4
   sprintSpeedMultiplier: 2
   maxSprintValue: 10
   sprintDecrement: 1
@@ -481,7 +480,7 @@ GameObject:
   - component: {fileID: 1879151947076173763}
   - component: {fileID: 1879151947076173765}
   - component: {fileID: 1879151947076173762}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DeathMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777497072180012898}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -37,7 +37,7 @@ public class WaveSpawner : MonoBehaviour
         }
         wave.SetWaveStats(waveNumber);
 
-        enemySpawnTimeInterval = 5f - ((float)waveNumber * 0.1f); 
+        enemySpawnTimeInterval = 7f - ((float)waveNumber * 0.05f); 
 
         waveStateIntermission = 5f;
         waveState = WaveState.START;
@@ -45,7 +45,7 @@ public class WaveSpawner : MonoBehaviour
 
         waveGUIScript.DisplayWaveStateGUI((int)waveState);
         waveGUIScript.CurrentDayDisplay(waveNumber);
-        waveGUIScript.UpdateZombiesDisplay(wave.EnemiesLeft, playerLoot.Pills, 0);
+        waveGUIScript.UpdateZombiesDisplay(wave.EnemiesLeft, playerLoot.Pills);
 
         gameEvents.OnWaveStateChanged += OnWaveStateChanged;
         gameEvents.OnEnemyDeath += HandleEnemyDeath;
@@ -117,7 +117,7 @@ public class WaveSpawner : MonoBehaviour
             {
                 SpawnEnemyGroup();
             }
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.L))
             {
                 wave.SetWaveStats(waveNumber);
             }
@@ -212,7 +212,7 @@ public class WaveSpawner : MonoBehaviour
         wave.DecreaseEnemiesLeft(enemyCount);
         playerLoot.Pills += 1 + (waveNumber/2);
         // Update pills count in waveGUIScript
-        waveGUIScript.UpdateZombiesDisplay( wave.EnemiesLeft ,playerLoot.Pills, 0);
+        waveGUIScript.UpdateZombiesDisplay( wave.EnemiesLeft ,playerLoot.Pills);
 
         if (waveState == WaveState.ONGOING && !wave.moreEnemiesLeft())
         {

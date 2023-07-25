@@ -7,7 +7,7 @@ public class ScreenShot : MonoBehaviour
     public KeyCode screenShotButton;
     void Update()
     {
-        if (Input.GetKeyDown(screenShotButton))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             ScreenCapture.CaptureScreenshot("screenshot.png");
             Debug.Log("A screenshot was taken!");

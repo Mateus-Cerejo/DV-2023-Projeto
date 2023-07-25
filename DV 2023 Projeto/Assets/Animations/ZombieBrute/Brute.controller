@@ -220,8 +220,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7007717026473850739}
-  m_StateMachineBehaviours:
-  - {fileID: -7411576521313743376}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -244,7 +243,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Zombie Attack Power
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -378004663665454797}
@@ -297,7 +296,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Zombie Attack Light
-  m_Speed: 1.5
+  m_Speed: 1.75
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5619629211093750482}

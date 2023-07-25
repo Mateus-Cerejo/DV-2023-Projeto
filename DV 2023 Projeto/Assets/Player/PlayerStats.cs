@@ -14,18 +14,20 @@ public class PlayerStats : MonoBehaviour
     private float lerpTimer;
     
     [SerializeField] private GameEvents gameEvents;
-    [SerializeField] private GameObject playerCharacter;
+    private GameObject playerCharacter;
     private GameObject respawnPoint;
     private CharacterController characterController;
+    private PlayerMovement pm;
 
     void Awake()
     {
         maxHealth += maxHealth * abp.lifeArtifactQuantityEquiped * abp.lifeArtifactEffect + maxHealth * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect;
         currentHealth = maxHealth;
+        pm = GetComponent<PlayerMovement>();
     }
     void Start()
     {
-        playerCharacter = transform.GetChild(0).gameObject;
+        playerCharacter = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         respawnPoint = GameObject.FindGameObjectWithTag("Respawn");
         characterController = GetComponent<CharacterController>();
     }
@@ -35,30 +37,6 @@ public class PlayerStats : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         updateHealthUI();
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            takeDamage(Random.Range(5, 10));
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            heal(Random.Range(5, 10));
-        }
-
-        if (Input.GetKeyDown(KeyCode.P)){
-            if (playerCharacter.activeSelf)
-            {
-                
-                PlayerDeath();
-            }
-            else
-            {
-               
-                PlayerRevive();
-               
-            }
-           
-        }
-        
     }
 
     private void updateHealthUI()
@@ -84,13 +62,17 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         lerpTimer = 0f;
+        if(currentHealth <= 0f)
+        {
+            PlayerDeath();
+        }
     }
 
-    public void heal(float value)
+    public void Heal(float value)
     {
         currentHealth += value;
         lerpTimer = 0f;
@@ -100,6 +82,8 @@ public class PlayerStats : MonoBehaviour
     {
         playerCharacter.SetActive(false);
         gameEvents.InvokePlayerDied();
+        characterController.enabled = false;
+        pm.enabled = false;
         Invoke("PlayerRevive", 10f);
     }
 
@@ -107,12 +91,11 @@ public class PlayerStats : MonoBehaviour
     private void PlayerRevive()
     {
         gameEvents.InvokePlayerRevived();
-
-        characterController.enabled = false;
         gameObject.transform.position = respawnPoint.transform.position;
         gameObject.transform.rotation = respawnPoint.transform.rotation;
         characterController.enabled = true;
         playerCharacter.SetActive(true);
-
+        pm.enabled = true;
+        currentHealth = maxHealth;
     }
 }
