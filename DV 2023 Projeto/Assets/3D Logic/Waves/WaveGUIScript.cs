@@ -37,10 +37,11 @@ public class WaveGUIScript : MonoBehaviour
     }
 
 
-    public void UpdateZombiesDisplay(int enemiesLeft, int pills, int population)
+    public void UpdateZombiesDisplay(int enemiesLeft, int pills)
     {
         zombiesCountText.text = enemiesLeft.ToString();
-        pillsCountText.text = pills.ToString();     
+        pillsCountText.text = pills.ToString();
+        populationCountText.text = PlayerPrefs.GetInt("curPopulation").ToString();
     }
 
     public void OnWaveStateChanged(int newWaveState)

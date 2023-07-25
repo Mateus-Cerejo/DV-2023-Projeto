@@ -33,7 +33,7 @@ public class ZombieNavMesh : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         isAttacking = false;
-        attackCooldown = 5f;
+        attackCooldown = 3f;
         stoppingDistance = 1.5f;
         delay = 0.2f;
 
