@@ -37,7 +37,7 @@ public class WaveSpawner : MonoBehaviour
         }
         wave.SetWaveStats(waveNumber);
 
-        enemySpawnTimeInterval = 5f - ((float)waveNumber * 0.1f); 
+        enemySpawnTimeInterval = 7f - ((float)waveNumber * 0.05f); 
 
         waveStateIntermission = 5f;
         waveState = WaveState.START;

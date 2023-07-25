@@ -441,7 +441,6 @@ MonoBehaviour:
   frontHealthBar: {fileID: 3561293124558268714}
   backHealthBar: {fileID: 195379436434714533}
   gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
-  playerCharacter: {fileID: 0}
 --- !u!114 &4109130220269337090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1879151946670772440}
   abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}
-  runningSpeed: 6
+  runningSpeed: 4
   sprintSpeedMultiplier: 2
   maxSprintValue: 10
   sprintDecrement: 1

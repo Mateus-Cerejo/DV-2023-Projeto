@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
@@ -26,6 +27,16 @@ public class BruteNavMesh : MonoBehaviour
     [SerializeField] private float lastAttackTime = 0;
     [SerializeField] private float attackCooldown; //segundos
     [SerializeField] private float stoppingDistance;
+
+    //Attack Stats
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask layer;
+
+    [SerializeField] private float attackRange;
+    [SerializeField] private float attackSweepArea;
+    [SerializeField] private float attackHeightArea = 0f;
+    [SerializeField] private float lightAttackDamage;
+    [SerializeField] private float heavyAttackDamage;
 
     private void Start()
     {
@@ -147,5 +158,53 @@ public class BruteNavMesh : MonoBehaviour
     private void OnPlayerRessurection()
     {
         currentTargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    private void SpawnLightHurtBox()
+    {
+        Vector3 boxSize = new Vector3(attackSweepArea, attackHeightArea, attackRange);
+
+        Collider[] objectsHit = Physics.OverlapBox(attackPoint.position, boxSize / 2f, attackPoint.rotation, layer);
+        foreach (Collider objectHit in objectsHit)
+        {
+            if (objectHit.gameObject.layer == 31) //Player layer at position 31
+            {
+                objectHit.gameObject.GetComponent<PlayerStats>().TakeDamage(lightAttackDamage);
+            }
+            if (objectHit.gameObject.layer == 9) //obstacle(barrier) layer at position 9
+            {
+                objectHit.gameObject.GetComponent<ObstacleHealth>().TakeDmg(lightAttackDamage);
+            }
+        }
+    }
+
+    private void SpawnHeavytHurtBox()
+    {
+        Vector3 boxSize = new Vector3(attackSweepArea+0.75f, attackHeightArea, attackRange*1.5f);
+
+        Collider[] objectsHit = Physics.OverlapBox(attackPoint.position, boxSize / 2f, attackPoint.rotation, layer);
+        foreach (Collider objectHit in objectsHit)
+        {
+            if (objectHit.gameObject.layer == 31) //Player layer at position 31
+            {
+                objectHit.gameObject.GetComponent<PlayerStats>().TakeDamage(heavyAttackDamage);
+            }
+            if (objectHit.gameObject.layer == 9) //obstacle(barrier) layer at position 9
+            {
+                objectHit.gameObject.GetComponent<ObstacleHealth>().TakeDmg(heavyAttackDamage);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+
+        Handles.color = Color.red;
+        Handles.matrix = Matrix4x4.TRS(attackPoint.position, attackPoint.rotation, Vector3.one);
+        Handles.DrawWireCube(Vector3.zero, new Vector3(attackSweepArea, attackHeightArea, attackRange));
     }
 }

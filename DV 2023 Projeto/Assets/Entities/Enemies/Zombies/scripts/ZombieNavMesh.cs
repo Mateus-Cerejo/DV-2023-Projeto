@@ -93,7 +93,6 @@ public class ZombieNavMesh : MonoBehaviour
             {
                 lastAttackTime = Time.time;
                 Attack();
-                SpawnHurtBox();
                 
             }
             else if (!isAttacking) 
@@ -155,7 +154,7 @@ public class ZombieNavMesh : MonoBehaviour
         //Debug.Log("End Attack");
     }
 
-    private void SpawnHurtBox()
+    private void SpawnLightHurtBox()
     {
         Vector3 boxSize = new Vector3(attackSweepArea, attackHeightArea, attackRange);
 
