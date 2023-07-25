@@ -85,15 +85,17 @@ public class PlayerMeleeSystem : MonoBehaviour
         Vector3 position = attackPoint.position;
 
         Collider[] hitEnemies = Physics.OverlapBox(position, boxSize / 2f, rotation, enemyLayer);
-        int i = 0;
         foreach (Collider enemy in hitEnemies)
         {
-            i++;
-            Debug.Log("Enemy hit" + i);
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage + attackDamage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + attackDamage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
-            //Destroy(Instantiate());
+            if (enemy.GetComponent<BruteStats>() != null)
+            {
+                enemy.GetComponent<BruteStats>().TakeDamage(attackDamage + attackDamage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + attackDamage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+            }
+            else if (enemy.GetComponent<ZombieStats>() != null)
+            {
+                enemy.GetComponent<ZombieStats>().TakeDamage(attackDamage + attackDamage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + attackDamage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+            }
         }
-        i = 0;
         if (canOverHeat)
         {
             currentHeat += heatIncrement;

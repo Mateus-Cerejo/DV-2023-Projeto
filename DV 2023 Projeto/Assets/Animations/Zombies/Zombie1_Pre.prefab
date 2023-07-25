@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 8891093192686243652}
   - component: {fileID: 719806915086452018}
   - component: {fileID: 1677317475246841974}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zombie1_Pre
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1467,6 +1467,7 @@ MonoBehaviour:
   attackSweepArea: 1.2
   attackHeightArea: 1.4
   attackDamage: 10
+  abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}
 --- !u!114 &719806915086452018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1482,6 +1483,14 @@ MonoBehaviour:
   gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
   curHealth: 150
   zombiesCount: 1
+  artifacts:
+  - {fileID: 7282188304968689986, guid: 19dfe2b4605b0294193d92e1f58f1cb0, type: 3}
+  - {fileID: 6773097196735638427, guid: 92a713661cd9edb4d9fedd7cdf26a91c, type: 3}
+  - {fileID: 6996194118285977495, guid: 2baa6dfd17a4c194fb793c28226ec22d, type: 3}
+  - {fileID: 610090460724746129, guid: 32c44357db1416a4581a17f05443e23a, type: 3}
+  - {fileID: 5251416897247643183, guid: 365c7bd0ebcd18d4581c27ecc9fadee6, type: 3}
+  - {fileID: 3924759465021042556, guid: 23524e75819846b4f903f1c8117ad300, type: 3}
+  abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}
 --- !u!114 &1677317475246841974
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2435,7 +2435,7 @@ GameObject:
   - component: {fileID: 2091527551025527231}
   m_Layer: 0
   m_Name: PcCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3587,6 +3587,10 @@ PrefabInstance:
       propertyPath: enemyLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 885747676430045288, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
+      propertyPath: reloadRadialImage
+      value: 
+      objectReference: {fileID: 7453201164528208599}
     - target: {fileID: 1166695345297623567, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
       propertyPath: fpsCam
       value: 

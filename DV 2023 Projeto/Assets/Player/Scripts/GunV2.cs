@@ -97,16 +97,19 @@ public class GunV2 : MonoBehaviour
 
                 if (Physics.Raycast(fpsCam.transform.position, direction.normalized, out rayHit, range))
                 {
-                    Debug.Log(rayHit.collider.name);
-
-                    if (rayHit.collider.CompareTag("Enemy"))
+                    if (rayHit.collider.GetComponent<BruteStats>() != null)
                     {
-                        rayHit.collider.GetComponent<Enemy>().TakeDamage(damage + damage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + damage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+                        rayHit.collider.GetComponent<BruteStats>().TakeDamage(damage + damage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + damage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+                        Destroy(Instantiate(enemyHitGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal)), 1.0f);
+                    }
+                    else if (rayHit.collider.GetComponent<ZombieStats>() != null)
+                    {
+                        rayHit.collider.GetComponent<ZombieStats>().TakeDamage(damage + damage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + damage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
                         Destroy(Instantiate(enemyHitGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal)), 1.0f);
                     }
                     else
                     {
-                        Destroy(Instantiate(bulletHoleGraphic, rayHit.point, Camera.main.transform.rotation), 0.5f);
+                        Destroy(Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal)), 0.5f);
                     }
                 }
                 bulletsShot--;
@@ -139,13 +142,16 @@ public class GunV2 : MonoBehaviour
             int layerMask = 31 << LayerMask.NameToLayer("Player");
             layerMask = ~layerMask; // Invert the layer mask to exclude the player layer
 
-            if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, layerMask))
+            if (Physics.Raycast(fpsCam.transform.position, direction.normalized, out rayHit, range))
             {
-                Debug.Log(rayHit.collider.name);
-
-                if (rayHit.collider.CompareTag("Enemy"))
+                if (rayHit.collider.GetComponent<BruteStats>() != null)
                 {
-                    rayHit.collider.GetComponent<Enemy>().TakeDamage(damage + damage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + damage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+                    rayHit.collider.GetComponent<BruteStats>().TakeDamage(damage + damage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + damage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+                    Destroy(Instantiate(enemyHitGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal)), 1.0f);
+                }
+                else if (rayHit.collider.GetComponent<ZombieStats>() != null)
+                {
+                    rayHit.collider.GetComponent<ZombieStats>().TakeDamage(damage + damage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + damage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
                     Destroy(Instantiate(enemyHitGraphic, rayHit.point, Quaternion.LookRotation(rayHit.normal)), 1.0f);
                 }
                 else

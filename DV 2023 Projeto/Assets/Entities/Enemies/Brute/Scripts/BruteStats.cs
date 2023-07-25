@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BruteStats : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class BruteStats : MonoBehaviour
     private BruteNavMesh characterMovement;
     [SerializeField] private GameEvents gameEvents;
 
-    [SerializeField] private int curHealth;
+    [SerializeField] private float curHealth;
     [SerializeField] private int zombiesCount;
 
 
@@ -19,7 +20,6 @@ public class BruteStats : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         characterMovement = GetComponent<BruteNavMesh>();
-
     }
 
     // Update is called once per frame
@@ -42,7 +42,8 @@ public class BruteStats : MonoBehaviour
 
     private void spawnArtifact()
     {
-        int spawnArtifact = Mathf.RoundToInt(Random.value);
+        int spawnArtifact = 1;//Mathf.RoundToInt(Random.value);
+
         if (spawnArtifact == 1)
         {
             if (abp.iceAuraArtifactQuantityStored < 1)
@@ -65,5 +66,14 @@ public class BruteStats : MonoBehaviour
                 if (artifactToSpawn >= 85) Instantiate(artifacts[4], transform.position, Quaternion.identity);
             }
         }
+    }
+    
+    
+
+    public void TakeDamage(float damage)
+    {
+        curHealth -= damage;
+        if(abp.iceAuraArtifactQuantityEquiped>=1) characterMovement.ApplyFreezeEffect();
+        if (curHealth <= 0) Die();
     }
 }

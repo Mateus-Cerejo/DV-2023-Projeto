@@ -38,6 +38,10 @@ public class ZombieNavMesh : MonoBehaviour
     [SerializeField] private float attackHeightArea = 0f;
     [SerializeField] private float attackDamage;
 
+    [SerializeField] private ArtifactBackPack abp;
+    private float normalSpeed;
+    private bool isFrozen = false;
+
     void Start()
     {
         //mainTargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -54,6 +58,8 @@ public class ZombieNavMesh : MonoBehaviour
 
         currentTargetTransform = mainTarget.transform;
         StartCoroutine("FindTargetsWithDelay", delay);
+
+        normalSpeed = navMeshAgent.speed;
 
     }
 
@@ -182,6 +188,26 @@ public class ZombieNavMesh : MonoBehaviour
         Handles.color = Color.red;
         Handles.matrix = Matrix4x4.TRS(attackPoint.position, attackPoint.rotation, Vector3.one);
         Handles.DrawWireCube(Vector3.zero, new Vector3(attackSweepArea, attackHeightArea, attackRange));
+    }
+
+    public void ApplyFreezeEffect()
+    {
+        if (!isFrozen)
+        {
+            isFrozen = true;
+            navMeshAgent.speed = normalSpeed - normalSpeed * abp.iceAuraArtifactEffect;
+            Invoke("RevertFreezeEffect", abp.iceAuraArtifactDuration);
+        }
+    }
+
+    public void RevertFreezeEffect()
+    {
+        if (isFrozen)
+        {
+            isFrozen = false;
+            navMeshAgent.speed = normalSpeed;
+
+        }
     }
 
 }

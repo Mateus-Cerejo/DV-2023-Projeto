@@ -327,7 +327,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3985200160101339630}
-  - component: {fileID: 6310721778877933799}
   m_Layer: 0
   m_Name: mixamorig:RightHand
   m_TagString: Untagged
@@ -355,19 +354,6 @@ Transform:
   m_Father: {fileID: 966220364585638798}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6310721778877933799
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816360883016319783}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9999998, y: 1.5805554, z: 0.32969683}
-  m_Center: {x: 0.000000031087072, y: 0.29028055, z: 0.006863346}
 --- !u!1 &943618431960376792
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +979,7 @@ GameObject:
   - component: {fileID: 7385859690126106187}
   - component: {fileID: 2472812378227291523}
   - component: {fileID: 6195426586818342325}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Brute
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1094,6 +1080,7 @@ MonoBehaviour:
   attackHeightArea: 3
   lightAttackDamage: 20
   heavyAttackDamage: 60
+  abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}
 --- !u!65 &7385859690126106187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1122,8 +1109,19 @@ MonoBehaviour:
   gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
   curHealth: 500
   zombiesCount: 5
+<<<<<<< Updated upstream
   artifacts: []
   abp: {fileID: 0}
+=======
+  artifacts:
+  - {fileID: 7282188304968689986, guid: 19dfe2b4605b0294193d92e1f58f1cb0, type: 3}
+  - {fileID: 6773097196735638427, guid: 92a713661cd9edb4d9fedd7cdf26a91c, type: 3}
+  - {fileID: 6996194118285977495, guid: 2baa6dfd17a4c194fb793c28226ec22d, type: 3}
+  - {fileID: 610090460724746129, guid: 32c44357db1416a4581a17f05443e23a, type: 3}
+  - {fileID: 5251416897247643183, guid: 365c7bd0ebcd18d4581c27ecc9fadee6, type: 3}
+  - {fileID: 3924759465021042556, guid: 23524e75819846b4f903f1c8117ad300, type: 3}
+  abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}
+>>>>>>> Stashed changes
 --- !u!82 &6195426586818342325
 AudioSource:
   m_ObjectHideFlags: 0

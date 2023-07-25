@@ -38,6 +38,12 @@ public class BruteNavMesh : MonoBehaviour
     [SerializeField] private float lightAttackDamage;
     [SerializeField] private float heavyAttackDamage;
 
+    [SerializeField] private ArtifactBackPack abp;
+    private float normalSpeed = 7.0f;
+    private bool isFrozen = false;
+
+
+
     private void Start()
     {
         mainTargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -53,6 +59,8 @@ public class BruteNavMesh : MonoBehaviour
 
         gameEvents.OnPlayerDeath += OnPlayerDeath;
         gameEvents.OnPlayerRessurection += OnPlayerRessurection;
+
+        normalSpeed = navMeshAgent.speed;
     }
 
     private void Update()
@@ -62,8 +70,6 @@ public class BruteNavMesh : MonoBehaviour
         //Debug.Log("Velocity" + navMeshAgent.velocity);
 
         //Debug.Log("CooldownTimer" + (Time.time - lastAttackTime));
-
-        
 
         if (dist <= stoppingDistance)
         {
@@ -180,7 +186,7 @@ public class BruteNavMesh : MonoBehaviour
 
     private void SpawnHeavytHurtBox()
     {
-        Vector3 boxSize = new Vector3(attackSweepArea+0.75f, attackHeightArea, attackRange*1.5f);
+        Vector3 boxSize = new Vector3(attackSweepArea + 0.75f, attackHeightArea, attackRange * 1.5f);
 
         Collider[] objectsHit = Physics.OverlapBox(attackPoint.position, boxSize / 2f, attackPoint.rotation, layer);
         foreach (Collider objectHit in objectsHit)
@@ -206,5 +212,25 @@ public class BruteNavMesh : MonoBehaviour
         Handles.color = Color.red;
         Handles.matrix = Matrix4x4.TRS(attackPoint.position, attackPoint.rotation, Vector3.one);
         Handles.DrawWireCube(Vector3.zero, new Vector3(attackSweepArea, attackHeightArea, attackRange));
+    }
+
+    public void ApplyFreezeEffect()
+    {
+        if (!isFrozen)
+        {
+            isFrozen = true;
+            navMeshAgent.speed = normalSpeed - normalSpeed * abp.iceAuraArtifactEffect;
+            Invoke("RevertFreezeEffect", abp.iceAuraArtifactDuration);
+        }
+    }
+
+    public void RevertFreezeEffect()
+    {
+        if (isFrozen)
+        {
+            isFrozen = false;
+            navMeshAgent.speed = normalSpeed;
+
+        }
     }
 }
