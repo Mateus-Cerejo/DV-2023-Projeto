@@ -4,23 +4,12 @@ using UnityEngine;
 
 public class ObstacleHealth : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void TakeDmg(int dmg)
+    [SerializeField] private float health = 100;
+    public void TakeDmg(float dmg)
     {
         health -= dmg;
-        if(health <= 0)
+        Debug.Log("hit");
+        if (health <= 0)
         {
             GameObject parentObject = transform.parent.gameObject;
             Destroy(parentObject);

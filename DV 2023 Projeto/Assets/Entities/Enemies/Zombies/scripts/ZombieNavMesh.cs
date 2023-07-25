@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
@@ -27,13 +29,22 @@ public class ZombieNavMesh : MonoBehaviour
     [SerializeField] private float attackCooldown; //segundos
     [SerializeField] private float stoppingDistance;
 
+    //Attack Stats
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask layer;
+
+    [SerializeField] private float attackRange;
+    [SerializeField] private float attackSweepArea;
+    [SerializeField] private float attackHeightArea = 0f;
+    [SerializeField] private float attackDamage;
+
     void Start()
     {
         //mainTargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         isAttacking = false;
-        attackCooldown = 3f;
+        attackCooldown = 1f;
         stoppingDistance = 1.5f;
         delay = 0.2f;
 
@@ -51,10 +62,10 @@ public class ZombieNavMesh : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(delay);
-            Debug.Log("In Enum");
+            //Debug.Log("In Enum");
 
             Transform target = fov.FindVisibleTargets();
-            Debug.Log(target);
+            //Debug.Log(target);
             currentTargetTransform = target != null
                     ? target
                     : mainTarget.transform;
@@ -82,6 +93,7 @@ public class ZombieNavMesh : MonoBehaviour
             {
                 lastAttackTime = Time.time;
                 Attack();
+                SpawnHurtBox();
                 
             }
             else if (!isAttacking) 
@@ -143,6 +155,34 @@ public class ZombieNavMesh : MonoBehaviour
         //Debug.Log("End Attack");
     }
 
-   
+    private void SpawnHurtBox()
+    {
+        Vector3 boxSize = new Vector3(attackSweepArea, attackHeightArea, attackRange);
+
+        Collider[] objectsHit = Physics.OverlapBox(attackPoint.position, boxSize / 2f, attackPoint.rotation, layer);
+        foreach (Collider objectHit in objectsHit)
+        {
+            if (objectHit.gameObject.layer == 31) //Player layer at position 31
+            {
+                objectHit.gameObject.GetComponent<PlayerStats>().TakeDamage(attackDamage);
+            }
+            if (objectHit.gameObject.layer == 9) //obstacle(barrier) layer at position 9
+            {
+                objectHit.gameObject.GetComponent<ObstacleHealth>().TakeDmg(attackDamage);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+
+        Handles.color = Color.red;
+        Handles.matrix = Matrix4x4.TRS(attackPoint.position, attackPoint.rotation, Vector3.one);
+        Handles.DrawWireCube(Vector3.zero, new Vector3(attackSweepArea, attackHeightArea, attackRange));
+    }
 
 }

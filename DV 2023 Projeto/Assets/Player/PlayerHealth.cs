@@ -27,11 +27,11 @@ public class PlayerHealth : MonoBehaviour
         updateHealthUI();
         if(Input.GetKeyDown(KeyCode.P))
         {
-            takeDamage(Random.Range(5,10));
+            TakeDamage(Random.Range(5,10));
         }
         if(Input.GetKeyDown(KeyCode.O))
         {
-            heal(Random.Range(5,10));
+            Heal(Random.Range(5,10));
         }
     }
 
@@ -58,13 +58,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         lerpTimer = 0f;
     }
 
-    public void heal(float value)
+    public void Heal(float value)
     {
         currentHealth += value;
         lerpTimer = 0f;
