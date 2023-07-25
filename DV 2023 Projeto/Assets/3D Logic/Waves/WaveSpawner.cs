@@ -49,6 +49,7 @@ public class WaveSpawner : MonoBehaviour
 
         gameEvents.OnWaveStateChanged += OnWaveStateChanged;
         gameEvents.OnEnemyDeath += HandleEnemyDeath;
+        gameEvents.OnEnemyBreach += HandleEnemyBreach;
 
         StartCoroutine("waveStateChange", waveStateIntermission);
         StartCoroutine("EnemySpawnBehaviour", enemySpawnTimeInterval);
@@ -225,6 +226,17 @@ public class WaveSpawner : MonoBehaviour
             gameEvents.InvokeWaveStateChanged((int)waveState); // Notify listeners of wave state change
             curStateTime = Time.time;
         }
+    }
+
+    private void HandleEnemyBreach()
+    {
+        int curPopulation = PlayerPrefs.GetInt("curPopulation");
+        curPopulation -= 10;
+        PlayerPrefs.SetInt("curPopulation", curPopulation);
+
+        wave.DecreaseEnemiesLeft(1);
+        waveGUIScript.UpdateZombiesDisplay(wave.EnemiesLeft, playerLoot.Pills);
+        
     }
 
     private void OnWaveStateChanged(int waveState)

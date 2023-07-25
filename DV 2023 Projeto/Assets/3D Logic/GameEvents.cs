@@ -17,6 +17,9 @@ public class GameEvents : ScriptableObject
     public delegate void PlayerRevived();
     public event PlayerRevived OnPlayerRessurection;
 
+    public delegate void EnemyBreached();
+    public event EnemyBreached OnEnemyBreach;
+
     public void InvokeWaveStateChanged(int waveState)
     {
         OnWaveStateChanged?.Invoke(waveState);
@@ -35,5 +38,10 @@ public class GameEvents : ScriptableObject
     public void InvokePlayerRevived()
     {
         OnPlayerRessurection?.Invoke();
+    }
+
+    public void InvokeEnemyBreached()
+    {
+        OnEnemyBreach?.Invoke();
     }
 }

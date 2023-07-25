@@ -21,6 +21,10 @@ public class WaveGUIScript : MonoBehaviour
     {
         currentWaveState = 0; // Set the initial wave state (you can change this as needed)
         DisplayWaveStateGUI(currentWaveState);
+        if (PlayerPrefs.GetInt("curPopulation") <= 0)
+        {
+            PlayerPrefs.SetInt("curPopulation", 20);
+        }
     }
 
     public void DisplayWaveStateGUI(int waveState)

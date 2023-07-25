@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawner (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -102,6 +102,7 @@ MonoBehaviour:
   - {fileID: 2443441600819543639}
   - {fileID: 2443441601707936725}
   - {fileID: 2443441601382160195}
+  - {fileID: 2382677191356965307}
   waveNumber: 1
   waveState: 0
   waveStateIntermission: 0
