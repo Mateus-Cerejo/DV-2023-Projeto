@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void spawnArtifact()
+    private void spawnArtifact()
     {
         int spawnArtifact = Mathf.RoundToInt(Random.value);
         if(spawnArtifact==1)

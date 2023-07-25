@@ -91,6 +91,7 @@ public class PlayerMeleeSystem : MonoBehaviour
             i++;
             Debug.Log("Enemy hit" + i);
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage + attackDamage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + attackDamage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+            //Destroy(Instantiate());
         }
         i = 0;
         if (canOverHeat)

@@ -424,9 +424,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.553
       objectReference: {fileID: 0}
+    - target: {fileID: 3250324551434249442, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3314779925380138511, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
       propertyPath: m_Layer
       value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321883495830035111, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3738318602536986402, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
       propertyPath: m_Layer
@@ -523,6 +531,10 @@ PrefabInstance:
     - target: {fileID: 6510600333227862385, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.574
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285498403449525900, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7639029098346773823, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
       propertyPath: fpsCam
