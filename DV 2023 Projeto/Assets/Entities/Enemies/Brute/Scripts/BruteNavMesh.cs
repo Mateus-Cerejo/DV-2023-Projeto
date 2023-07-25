@@ -11,6 +11,8 @@ public class BruteNavMesh : MonoBehaviour
     [SerializeField] private Transform currentTargetTransform;
 
     [SerializeField] private GameEvents gameEvents;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip zombieScream;
 
     private Animator animator;
 
@@ -31,6 +33,8 @@ public class BruteNavMesh : MonoBehaviour
         currentTargetTransform = mainTargetTransform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
         attackCooldown = 2f;
         isScreaming = true;
         isAttacking = false;
@@ -125,6 +129,10 @@ public class BruteNavMesh : MonoBehaviour
         Debug.Log("End Attack");
     }
 
+    private void startScreaming()
+    {
+        audioSource.PlayOneShot(zombieScream);
+    }
 
     private void stopScreaming()
     {
