@@ -17789,6 +17789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   percText: {fileID: 1821385057}
   percSlider: {fileID: 749128225}
+  winPane: {fileID: 4027460338826918146, guid: 5ca9da620b786aa42bc3837d580d0826, type: 3}
 --- !u!114 &650510983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29591,6 +29592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07385e1388727ef45919ad7d62c76b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1 &1267503540
 GameObject:
   m_ObjectHideFlags: 0

@@ -104,10 +104,10 @@ public class SaveObject
         hab3 = PlayerPrefs.GetInt("Hab 3");
         hab4 = PlayerPrefs.GetInt("Hab 4");
         market = PlayerPrefs.GetInt("Market");
-        hospital = PlayerPrefs.GetInt("Factory");
+        factory = PlayerPrefs.GetInt("Factory");
         lab = PlayerPrefs.GetInt("Lab");
         farm = PlayerPrefs.GetInt("Farm");
-        factory = PlayerPrefs.GetInt("Hospital");
+        hospital = PlayerPrefs.GetInt("Hospital");
         attackBonus = PlayerPrefs.GetInt("attackBonus");
         healthBonus = PlayerPrefs.GetInt("healthBonus");
         speedBonus = PlayerPrefs.GetInt("speedBonus");
