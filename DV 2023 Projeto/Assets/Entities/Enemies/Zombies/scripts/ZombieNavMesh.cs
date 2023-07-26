@@ -17,6 +17,8 @@ public class ZombieNavMesh : MonoBehaviour
     [SerializeField] private GameEvents gameEvents;
 
     [SerializeField] private FieldOfView fov;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip zombieAttack;
 
     private Animator animator;
 
@@ -53,9 +55,9 @@ public class ZombieNavMesh : MonoBehaviour
         delay = 0.2f;
 
         fov = GetComponent<FieldOfView>();
+        audioSource = GetComponent<AudioSource>();
+
         mainTarget = GameObject.FindGameObjectWithTag("Gate");
-
-
         currentTargetTransform = mainTarget.transform;
         StartCoroutine("FindTargetsWithDelay", delay);
 
@@ -148,8 +150,7 @@ public class ZombieNavMesh : MonoBehaviour
 
     private void startAttack()
     {
-        
-        //Debug.Log("Start Attack");
+        audioSource.PlayOneShot(zombieAttack);
     }
 
     private void endAttack()
@@ -157,7 +158,6 @@ public class ZombieNavMesh : MonoBehaviour
         animator.SetBool("isAttacking", false);
         isAttacking = false;
         lastAttackTime = Time.time;
-        //Debug.Log("End Attack");
     }
 
     private void SpawnLightHurtBox()
