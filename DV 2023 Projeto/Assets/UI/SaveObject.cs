@@ -34,6 +34,9 @@ public class SaveObject
     public int lab;
     public int farm;
     public int factory;
+    public int attackBonus;
+    public int healthBonus;
+    public int speedBonus;
 
     public SaveObject()
     {
@@ -49,10 +52,10 @@ public class SaveObject
         factoryNumOfItems = 0;
         factoryDiscountPerc = 0;
         marketDiscountPerc = 0;
-        wood = 5000;
-        stone = 5000;
-        metal = 5000;
-        pills = 1000;
+        wood = 100;
+        stone = 100;
+        metal = 50;
+        pills = 10;
         curPopulation = 50;
         maxPopulation = 100;
         itemsInMarket = "";
@@ -66,6 +69,9 @@ public class SaveObject
         lab = 0;
         farm = 0;
         factory = 0;
+        attackBonus = 1;
+        healthBonus = 1;
+        speedBonus = 1;
     }
 
     public void Save()
@@ -100,6 +106,9 @@ public class SaveObject
         lab = PlayerPrefs.GetInt("Lab");
         farm = PlayerPrefs.GetInt("Farm");
         factory = PlayerPrefs.GetInt("Hospital");
+        attackBonus = PlayerPrefs.GetInt("attackBonus");
+        healthBonus = PlayerPrefs.GetInt("healthBonus");
+        speedBonus = PlayerPrefs.GetInt("speedBonus");
     }
 
     public void Load()
@@ -134,5 +143,8 @@ public class SaveObject
         PlayerPrefs.SetInt("Lab", lab);
         PlayerPrefs.SetInt("Farm", farm);
         PlayerPrefs.SetInt("Hospital", hospital);
+        PlayerPrefs.SetInt("attackBonus", attackBonus);
+        PlayerPrefs.SetInt("healthBonus", healthBonus);
+        PlayerPrefs.SetInt("speedBonus", speedBonus);
     }
 }

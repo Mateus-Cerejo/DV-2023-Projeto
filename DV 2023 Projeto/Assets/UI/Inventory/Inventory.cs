@@ -138,7 +138,6 @@ public class Inventory : MonoBehaviour
         {
             meeleWeaponEquiped = item;
 
-           // weaponManager.currentMeleeIndex = 1;
             switch (item.GetName())
             {
                 case "BaseballBat":
@@ -162,7 +161,6 @@ public class Inventory : MonoBehaviour
         {
             rangeWeaponEquiped = item;
 
-           // weaponManager.currentRangedIndex = 1;
             switch (item.GetName())
             {
                 case "Pistol":
@@ -209,7 +207,36 @@ public class Inventory : MonoBehaviour
 
             switch (item.GetName())
             {
-                
+                case "Speed":
+                    {
+                        artifactBackPack.speedArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Power":
+                    {
+                        artifactBackPack.powerArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Looter":
+                    {
+                        artifactBackPack.looterArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Life":
+                    {
+                        artifactBackPack.lifeArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Ice Aura":
+                    {
+                        artifactBackPack.iceAuraArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "All In One":
+                    {
+                        artifactBackPack.allInOneArtifactQuantityEquiped += 1;
+                    }
+                    break;
             }
             return true;
         }
@@ -225,7 +252,7 @@ public class Inventory : MonoBehaviour
                     if (meeleWeaponEquiped == item)
                     {
                         meeleWeaponEquiped = null;
-                        weaponManager.currentMeleeIndex = -1; // ----------------------
+                        weaponManager.currentMeleeIndex = 0;
                         return true;
                     }
                 }
@@ -235,7 +262,7 @@ public class Inventory : MonoBehaviour
                     if (rangeWeaponEquiped == item)
                     {
                         rangeWeaponEquiped = null;
-                        weaponManager.currentRangedIndex = -1; // ----------------------
+                        weaponManager.currentRangedIndex = 0;
                         return true;
                     }
                 }
@@ -255,6 +282,39 @@ public class Inventory : MonoBehaviour
         {
             if (artifactsEquiped[i] == item) { 
                 artifactsEquiped.Remove(item);
+                switch (item.GetName())
+                {
+                    case "Speed":
+                        {
+                            artifactBackPack.speedArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "Power":
+                        {
+                            artifactBackPack.powerArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "Looter":
+                        {
+                            artifactBackPack.looterArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "Life":
+                        {
+                            artifactBackPack.lifeArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "Ice Aura":
+                        {
+                            artifactBackPack.iceAuraArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "All In One":
+                        {
+                            artifactBackPack.allInOneArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                }
                 break;
             }
         }

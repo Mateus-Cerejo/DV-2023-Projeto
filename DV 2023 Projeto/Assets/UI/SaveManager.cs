@@ -11,8 +11,6 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
-
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -28,10 +26,12 @@ public class SaveManager : MonoBehaviour
         Inventory.Instance.gameObject.SetActive(true);
         yield return new WaitUntil(() => Inventory.Instance);
         Inventory.Instance.gameObject.SetActive(false);
+
         Load();
         ready = true;
     }
 
+    /*
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
@@ -44,6 +44,7 @@ public class SaveManager : MonoBehaviour
             Load();
         }
     }
+    */
 
     void OnApplicationQuit()
     {
