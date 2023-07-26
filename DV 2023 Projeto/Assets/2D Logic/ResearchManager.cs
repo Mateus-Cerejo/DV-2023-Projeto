@@ -8,10 +8,9 @@ public class ResearchManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI percText;
     [SerializeField] GameObject percSlider;
+    [SerializeField] GameObject winPane;
 
     private int curResearchPerc;
-    public delegate void Win();
-    public static event Win onWin;
 
     private IEnumerator Start()
     {
@@ -21,20 +20,27 @@ public class ResearchManager : MonoBehaviour
 
         percSlider.GetComponent<Slider>().value = curResearchPerc;
         percText.text = curResearchPerc + "%";
+
+        SetSearch(PlayerPrefs.GetInt("curResearchPerc",0));
     }
 
-    public void IncrementSearch(int amount)
+    public void SetSearch(int amount)
     {
-        curResearchPerc = Mathf.Clamp(curResearchPerc + amount, 0, 100);
-
-        PlayerPrefs.SetInt("curResearchPerc", curResearchPerc);
+        curResearchPerc = Mathf.Clamp(amount, 0, 100);
 
         percSlider.GetComponent<Slider>().value = curResearchPerc;
         percText.text = curResearchPerc + "%";
 
-        if (curResearchPerc == 100)
+        if (curResearchPerc >= 100)
         {
-            onWin?.Invoke();
+            Win();
         }
+    }
+
+    public void Win()
+    {
+        Instantiate(winPane, GameObject.Find("Canvas").transform);
+
+        PauseMenu.Instance.enabled = false;
     }
 }
