@@ -14,6 +14,8 @@ public class BruteNavMesh : MonoBehaviour
     [SerializeField] private GameEvents gameEvents;
     private AudioSource audioSource;
     [SerializeField] private AudioClip zombieScream;
+    [SerializeField] private AudioClip zombieAttack;
+    
 
     private Animator animator;
 
@@ -134,8 +136,8 @@ public class BruteNavMesh : MonoBehaviour
 
     private void startAttack()
     {
-
-        Debug.Log("Start Attack");
+        audioSource.PlayOneShot(zombieAttack);
+        audioSource.PlayOneShot(zombieAttack);
     }
 
     private void endAttack()

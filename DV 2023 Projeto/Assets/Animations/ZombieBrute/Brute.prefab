@@ -1063,6 +1063,7 @@ MonoBehaviour:
   currentTargetTransform: {fileID: 0}
   gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
   zombieScream: {fileID: 8300000, guid: d108e9ae3908d4d479e1e41cca0188a3, type: 3}
+  zombieAttack: {fileID: 8300000, guid: 5ce6bb262e363834db2b5cdef8a21155, type: 3}
   isScreaming: 0
   isAttacking: 0
   dist: 100
@@ -1130,14 +1131,14 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: d108e9ae3908d4d479e1e41cca0188a3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.622
-  m_Pitch: 1.5
+  m_Pitch: 1.25
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 2
-  MinDistance: 1
+  MinDistance: 50
   MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
