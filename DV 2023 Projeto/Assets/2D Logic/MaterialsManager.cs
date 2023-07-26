@@ -48,6 +48,15 @@ public class MaterialsManager : MonoBehaviour
         pillsLabel.SetText("" + materials.GetPills());
     }
 
+    public void ConsumePills()
+    {
+        PlayerPrefs.SetFloat("attackBonus", PlayerPrefs.GetFloat("attackBonus",1) + 0.05f * materials.GetPills());
+        PlayerPrefs.SetFloat("healthBonus", PlayerPrefs.GetFloat("healthBonus", 1) + 0.02f * materials.GetPills());
+        PlayerPrefs.SetFloat("speedBonus", PlayerPrefs.GetFloat("speedBonus", 1) + 0.02f * materials.GetPills());
+
+        AddOrSubPills(-materials.GetPills());
+    }
+
     public bool Buy(Materials price)
     {
         if (price.GetWood() > materials.GetWood() || price.GetStone() > materials.GetStone() || price.GetMetal() > materials.GetMetal() || price.GetPills() > materials.GetPills())

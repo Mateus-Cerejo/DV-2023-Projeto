@@ -13,22 +13,28 @@ MonoBehaviour:
   m_Name: ArtifactBackPack
   m_EditorClassIdentifier: 
   _artifactEquipLimit: 4
-  _powerArtifactQuantityStored: 1
+  _powerArtifactQuantityStored: 0
   _powerArtifactQuantityEquiped: 0
   _powerArtifactEffect: 20
-  _speedArtifactQuantityStored: 4
+  _powerSO: {fileID: 11400000, guid: 805f4e5e3f7b1a8428fc3f8530b29c5f, type: 2}
+  _speedArtifactQuantityStored: 0
   _speedArtifactQuantityEquiped: 0
   _speedArtifactEffect: 20
-  _lifeArtifactQuantityStored: 4
+  _speedSO: {fileID: 11400000, guid: 4bb2b5f1c30cb3844bac8254c78f7569, type: 2}
+  _lifeArtifactQuantityStored: 0
   _lifeArtifactQuantityEquiped: 0
   _lifeArtifactEffect: 20
-  _looterArtifactQuantityStored: 2
+  _lifeSO: {fileID: 11400000, guid: d757190d370586e40886a818b6405d8d, type: 2}
+  _looterArtifactQuantityStored: 0
   _looterArtifactQuantityEquiped: 0
   _looterArtifactEffect: 20
-  _allInOneArtifactQuantityStored: 1
+  _looterSO: {fileID: 11400000, guid: 646a2a3378743704582dc4b174032abe, type: 2}
+  _allInOneArtifactQuantityStored: 0
   _allInOneArtifactQuantityEquiped: 0
   _allInOneArtifactEffect: 20
+  _allInOneSO: {fileID: 11400000, guid: b38aab5b12148a54abcbb92dc68fcc6c, type: 2}
   _iceAuraArtifactQuantityStored: 0
-  _iceAuraArtifactQuantityEquiped: 1
+  _iceAuraArtifactQuantityEquiped: 0
   _iceAuraArtifactEffect: 10
   _iceAuraArtifactDuration: 2
+  _iceAuraSO: {fileID: 11400000, guid: 1e2ac442de456ff4b9acc6513b854702, type: 2}

@@ -34,6 +34,10 @@ public class SaveObject
     public int lab;
     public int farm;
     public int factory;
+    public int attackBonus;
+    public int healthBonus;
+    public int speedBonus;
+    public int day;
 
     public SaveObject()
     {
@@ -49,8 +53,8 @@ public class SaveObject
         factoryNumOfItems = 0;
         factoryDiscountPerc = 0;
         marketDiscountPerc = 0;
-        wood = 5000;
-        stone = 5000;
+        wood = 10000;
+        stone = 10000;
         metal = 5000;
         pills = 1000;
         curPopulation = 50;
@@ -66,6 +70,10 @@ public class SaveObject
         lab = 0;
         farm = 0;
         factory = 0;
+        attackBonus = 1;
+        healthBonus = 1;
+        speedBonus = 1;
+        day = 1;
     }
 
     public void Save()
@@ -100,11 +108,15 @@ public class SaveObject
         lab = PlayerPrefs.GetInt("Lab");
         farm = PlayerPrefs.GetInt("Farm");
         factory = PlayerPrefs.GetInt("Hospital");
+        attackBonus = PlayerPrefs.GetInt("attackBonus");
+        healthBonus = PlayerPrefs.GetInt("healthBonus");
+        speedBonus = PlayerPrefs.GetInt("speedBonus");
+        day = PlayerPrefs.GetInt("day");
     }
 
     public void Load()
     {
-        Inventory.Instance.SetItemsUnequiped(unEquipedItems);
+        Inventory.Instance.AddRangeItemsUnequiped(unEquipedItems);
         Inventory.Instance.SetArtifactsEquiped(equipedArtifacts);
         Inventory.Instance.SetMeeleWeaponEquiped(equipedMeeleWeapon);
         Inventory.Instance.SetRangeWeaponEquiped(equipedRangeWeapon);
@@ -134,5 +146,9 @@ public class SaveObject
         PlayerPrefs.SetInt("Lab", lab);
         PlayerPrefs.SetInt("Farm", farm);
         PlayerPrefs.SetInt("Hospital", hospital);
+        PlayerPrefs.SetInt("attackBonus", attackBonus);
+        PlayerPrefs.SetInt("healthBonus", healthBonus);
+        PlayerPrefs.SetInt("speedBonus", speedBonus);
+        PlayerPrefs.SetInt("day", day);
     }
 }

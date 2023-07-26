@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -13,6 +14,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private ArtifactBackPack artifactBackPack;
     [SerializeField] private Transform inventoryGrid;
     [SerializeField] private GameObject itemPreview;
+    [SerializeField] private TextMeshProUGUI pillsText;
 
     private List<ItemSO> itemsUnequiped;
     private List<ItemSO> artifactsEquiped;
@@ -45,7 +47,10 @@ public class Inventory : MonoBehaviour
         displayingArtifacts = new List<ItemPreview>();
         displayingMeele = null;
         displayingRange = null;
+        
     }
+
+    public void UpdatePillsText() { pillsText.text = PlayerPrefs.GetInt("pills", 0) + ""; }
 
     public void Open()
     {
@@ -59,6 +64,9 @@ public class Inventory : MonoBehaviour
 
     private void OnEnable()
     {
+        UpdateWeapon();
+        UpdateArtifactBackPack();
+
         foreach (ItemSO item in itemsUnequiped)
         {
             ItemPreview newPreview = Instantiate(itemPreview, inventoryGrid).GetComponent<ItemPreview>();
@@ -91,6 +99,7 @@ public class Inventory : MonoBehaviour
             displayingRange.SetUp(rangeWeaponEquiped);
             displayingRange.GetComponent<RectTransform>().position = rangeSlot.GetComponent<RectTransform>().position;
         }
+        UpdatePillsText();
     }
 
     private void OnDisable()
@@ -122,6 +131,143 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void UpdateWeapon()
+    {
+        weaponManager.currentRangedIndex = 0;
+        if (meeleWeaponEquiped == null)
+        {
+            weaponManager.currentMeleeIndex = 0;
+        }
+        else
+        {
+            switch (meeleWeaponEquiped.GetName())
+            {
+                case "BaseballBat":
+                    {
+                        weaponManager.currentMeleeIndex = 0;
+                    }
+                    break;
+                case "Chainsaw":
+                    {
+                        weaponManager.currentMeleeIndex = 1;
+                    }
+                    break;
+            }
+        }
+
+        if (rangeWeaponEquiped == null)
+        {
+            weaponManager.currentRangedIndex = 0;
+        }
+        else
+        {
+            switch (rangeWeaponEquiped.GetName())
+            {
+                case "Pistol":
+                    {
+                        weaponManager.currentRangedIndex = 0;
+                    }
+                    break;
+                case "SMG":
+                    {
+                        weaponManager.currentRangedIndex = 1;
+                    }
+                    break;
+                case "AK":
+                    {
+                        weaponManager.currentRangedIndex = 2;
+                    }
+                    break;
+                case "Shotgun":
+                    {
+                        weaponManager.currentRangedIndex = 3;
+                    }
+                    break;
+                case "Sniper":
+                    {
+                        weaponManager.currentRangedIndex = 4;
+                    }
+                    break;
+                case "Admin Gun":
+                    {
+                        weaponManager.currentRangedIndex = 5;
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void UpdateArtifactBackPack()
+    {
+        for (int i = 0; i < artifactBackPack.powerArtifactQuantityStored; artifactBackPack.powerArtifactQuantityStored--)
+        {
+            AddItem(artifactBackPack.powerSO);
+        }
+
+        for (int i = 0; i < artifactBackPack.speedArtifactQuantityStored; artifactBackPack.speedArtifactQuantityStored--)
+        {
+            AddItem(artifactBackPack.speedSO);
+        }
+
+        for (int i = 0; i < artifactBackPack.looterArtifactQuantityStored; artifactBackPack.looterArtifactQuantityStored--)
+        {
+            AddItem(artifactBackPack.looterSO);
+        }
+
+        for (int i = 0; i < artifactBackPack.lifeArtifactQuantityStored; artifactBackPack.lifeArtifactQuantityStored--)
+        {
+            AddItem(artifactBackPack.lifeSO);
+        }
+
+        for (int i = 0; i < artifactBackPack.allInOneArtifactQuantityStored; artifactBackPack.allInOneArtifactQuantityStored--)
+        {
+            AddItem(artifactBackPack.allInOneSO);
+        }
+
+        for (int i = 0; i < artifactBackPack.iceAuraArtifactQuantityStored; artifactBackPack.iceAuraArtifactQuantityStored--)
+        {
+            AddItem(artifactBackPack.iceAuraSO);
+        }
+
+        artifactBackPack.Reset();
+        foreach (ItemSO item in artifactsEquiped)
+        {
+            switch (item.GetName())
+            {
+                case "Speed":
+                    {
+                        artifactBackPack.speedArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Power":
+                    {
+                        artifactBackPack.powerArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Looter":
+                    {
+                        artifactBackPack.looterArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Life":
+                    {
+                        artifactBackPack.lifeArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Ice Aura":
+                    {
+                        artifactBackPack.iceAuraArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "All In One":
+                    {
+                        artifactBackPack.allInOneArtifactQuantityEquiped += 1;
+                    }
+                    break;
+            }
+        }
+    }
+
     public void RemoveFromUnequiped(ItemSO item)
     {
         itemsUnequiped.Remove(item);
@@ -138,7 +284,6 @@ public class Inventory : MonoBehaviour
         {
             meeleWeaponEquiped = item;
 
-           // weaponManager.currentMeleeIndex = 1;
             switch (item.GetName())
             {
                 case "BaseballBat":
@@ -162,7 +307,6 @@ public class Inventory : MonoBehaviour
         {
             rangeWeaponEquiped = item;
 
-           // weaponManager.currentRangedIndex = 1;
             switch (item.GetName())
             {
                 case "Pistol":
@@ -209,7 +353,36 @@ public class Inventory : MonoBehaviour
 
             switch (item.GetName())
             {
-                
+                case "Speed":
+                    {
+                        artifactBackPack.speedArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Power":
+                    {
+                        artifactBackPack.powerArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Looter":
+                    {
+                        artifactBackPack.looterArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Life":
+                    {
+                        artifactBackPack.lifeArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "Ice Aura":
+                    {
+                        artifactBackPack.iceAuraArtifactQuantityEquiped += 1;
+                    }
+                    break;
+                case "All In One":
+                    {
+                        artifactBackPack.allInOneArtifactQuantityEquiped += 1;
+                    }
+                    break;
             }
             return true;
         }
@@ -225,7 +398,7 @@ public class Inventory : MonoBehaviour
                     if (meeleWeaponEquiped == item)
                     {
                         meeleWeaponEquiped = null;
-                        weaponManager.currentMeleeIndex = -1; // ----------------------
+                        weaponManager.currentMeleeIndex = 0;
                         return true;
                     }
                 }
@@ -235,7 +408,7 @@ public class Inventory : MonoBehaviour
                     if (rangeWeaponEquiped == item)
                     {
                         rangeWeaponEquiped = null;
-                        weaponManager.currentRangedIndex = -1; // ----------------------
+                        weaponManager.currentRangedIndex = 0;
                         return true;
                     }
                 }
@@ -255,6 +428,39 @@ public class Inventory : MonoBehaviour
         {
             if (artifactsEquiped[i] == item) { 
                 artifactsEquiped.Remove(item);
+                switch (item.GetName())
+                {
+                    case "Speed":
+                        {
+                            artifactBackPack.speedArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "Power":
+                        {
+                            artifactBackPack.powerArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "Looter":
+                        {
+                            artifactBackPack.looterArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "Life":
+                        {
+                            artifactBackPack.lifeArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "Ice Aura":
+                        {
+                            artifactBackPack.iceAuraArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                    case "All In One":
+                        {
+                            artifactBackPack.allInOneArtifactQuantityEquiped -= 1;
+                        }
+                        break;
+                }
                 break;
             }
         }
@@ -266,6 +472,7 @@ public class Inventory : MonoBehaviour
     public ItemSO GetRangeWeaponEquiped() { return rangeWeaponEquiped; }
 
     public void SetItemsUnequiped(List<ItemSO> itemList) { itemsUnequiped = itemList; }
+    public void AddRangeItemsUnequiped(List<ItemSO> itemList) { itemsUnequiped.AddRange(itemList); }
     public void SetArtifactsEquiped(List<ItemSO> itemList) { artifactsEquiped = itemList; }
     public void SetMeeleWeaponEquiped(ItemSO item) { meeleWeaponEquiped = item; }
     public void SetRangeWeaponEquiped(ItemSO item) { rangeWeaponEquiped = item; }
