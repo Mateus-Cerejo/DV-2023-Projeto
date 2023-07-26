@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e8bca7a0042ed49b5de797f68466cb, type: 3}
   m_Name: FI Chainsaw
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 21300000, guid: 35145e27b000f134f88f55de2728d08c, type: 3}
+  itemSprite: {fileID: 21300000, guid: f377ee8e8425ec34cb1e21489422db47, type: 3}
   itemRarity: 20
+  itemType: 0
   itemName: Chainsaw
   itemDescription: Very strong, just try not to run out of gas
   itemPrice:
