@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
     [SerializeField] private RectTransform meeleSlot;
     [SerializeField] private RectTransform rangeSlot;
     [SerializeField] private List<RectTransform> artifactSlots;
@@ -46,6 +47,16 @@ public class Inventory : MonoBehaviour
         displayingRange = null;
     }
 
+    public void Open()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnEnable()
     {
         foreach (ItemSO item in itemsUnequiped)
@@ -76,7 +87,7 @@ public class Inventory : MonoBehaviour
         if (rangeWeaponEquiped != null)
         {
             displayingRange = Instantiate(itemPreview, inventoryGrid).GetComponent<ItemPreview>();
-            displayingMeele.transform.SetParent(rangeSlot);
+            displayingRange.transform.SetParent(rangeSlot);
             displayingRange.SetUp(rangeWeaponEquiped);
             displayingRange.GetComponent<RectTransform>().position = rangeSlot.GetComponent<RectTransform>().position;
         }
@@ -100,8 +111,15 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        Destroy(displayingMeele);
-        Destroy(displayingRange);
+        if (displayingMeele != null)
+        {
+            Destroy(displayingMeele.gameObject);
+        }
+
+        if (displayingRange != null)
+        {
+            Destroy(displayingRange.gameObject);
+        }
     }
 
     public void RemoveFromUnequiped(ItemSO item)

@@ -22,13 +22,18 @@ public class Factory : MonoBehaviour
                 case 1:
                     {
                         PlayerPrefs.SetInt("FactoryNumOfItems", 2);
-                        PlayerPrefs.SetInt("FactoryNumOfItems", 2);
                         shop.RefreshShop();
                     }
                     break;
                 case 2:
                     {
                         PlayerPrefs.SetInt("FactoryNumOfItems", 3);
+                        shop.RefreshShop();
+                    }
+                    break;
+                case 3:
+                    {
+                        PlayerPrefs.SetInt("FactoryNumOfItems", 4);
                         shop.RefreshShop();
                     }
                     break;

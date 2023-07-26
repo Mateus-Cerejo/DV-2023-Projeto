@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f4563a94c14c74f9bd46734b00a9a4, type: 3}
   m_Name: Lab
   m_EditorClassIdentifier: 
-  type: 
+  type: Lab
   levels:
   - {fileID: 2702610848922970636, guid: fcfcc022986e66e4d99eb505e4325dec, type: 3}
   - {fileID: 2702610848922970636, guid: fcfcc022986e66e4d99eb505e4325dec, type: 3}
@@ -21,9 +21,11 @@ MonoBehaviour:
   - wood: 350
     stone: 300
     metal: 200
+    pills: 0
   - wood: 350
     stone: 350
     metal: 350
+    pills: 0
   upgradeText:
   - Increases the velocity of cure's search
   - Increases the velocity of cure's search

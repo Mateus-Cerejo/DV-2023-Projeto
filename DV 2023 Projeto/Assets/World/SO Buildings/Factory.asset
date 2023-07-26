@@ -12,18 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f4563a94c14c74f9bd46734b00a9a4, type: 3}
   m_Name: Factory
   m_EditorClassIdentifier: 
-  type: 
+  type: Factory
   levels:
   - {fileID: 7171233017824985953, guid: 78a5fe18ab316d04181556fd30dee4ed, type: 3}
   - {fileID: 8109884374420986784, guid: 8be8c2b8ecc26124490eb5c87f3143ec, type: 3}
   - {fileID: 8109884374420986784, guid: 8be8c2b8ecc26124490eb5c87f3143ec, type: 3}
+  - {fileID: 8109884374420986784, guid: 8be8c2b8ecc26124490eb5c87f3143ec, type: 3}
   levelCosts:
-  - wood: 300
-    stone: 20
+  - wood: 250
+    stone: 100
     metal: 100
-  - wood: 500
-    stone: 290
+    pills: 0
+  - wood: 100
+    stone: 100
     metal: 100
+    pills: 0
+  - wood: 140
+    stone: 140
+    metal: 140
+    pills: 0
   upgradeText:
-  - Unlocks the production of weapons.
-  - Better prices, more weapons.
+  - Unlocks the production of weapons, upgrades barriers.
+  - Better prices, more weapons, upgrades barriers.
+  - Better prices, more weapons, upgrades barriers, upgrades barriers.

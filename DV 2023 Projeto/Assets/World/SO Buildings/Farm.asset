@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f4563a94c14c74f9bd46734b00a9a4, type: 3}
   m_Name: Farm
   m_EditorClassIdentifier: 
-  type: 
+  type: Farm
   levels:
   - {fileID: 7171233017824985953, guid: 78a5fe18ab316d04181556fd30dee4ed, type: 3}
   - {fileID: 7697149928590007902, guid: 3eb4cadf706dd604e90718439761083e, type: 3}
@@ -21,9 +21,11 @@ MonoBehaviour:
   - wood: 200
     stone: 200
     metal: 10
+    pills: 0
   - wood: 100
     stone: 100
     metal: 10
+    pills: 0
   upgradeText:
   - Increases population gain per round
   - Increases population gain per round

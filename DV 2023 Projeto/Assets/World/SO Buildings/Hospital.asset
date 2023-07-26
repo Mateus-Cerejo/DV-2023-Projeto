@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f4563a94c14c74f9bd46734b00a9a4, type: 3}
   m_Name: Hospital
   m_EditorClassIdentifier: 
-  type: 
+  type: Hospital
   levels:
   - {fileID: 7171233017824985953, guid: 78a5fe18ab316d04181556fd30dee4ed, type: 3}
   - {fileID: 4606878497726750328, guid: 71b0988243472234fb1085559ac41a95, type: 3}
@@ -21,9 +21,11 @@ MonoBehaviour:
   - wood: 200
     stone: 200
     metal: 100
+    pills: 0
   - wood: 150
     stone: 150
     metal: 150
+    pills: 0
   upgradeText:
   - Reduces the hero's reviving time
   - Reduces the hero's reviving time
