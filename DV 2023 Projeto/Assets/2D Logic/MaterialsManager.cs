@@ -54,7 +54,7 @@ public class MaterialsManager : MonoBehaviour
         PlayerPrefs.SetFloat("healthBonus", PlayerPrefs.GetFloat("healthBonus", 1) + 0.02f * materials.GetPills());
         PlayerPrefs.SetFloat("speedBonus", PlayerPrefs.GetFloat("speedBonus", 1) + 0.02f * materials.GetPills());
 
-        AddOrSubPills(materials.GetPills());
+        AddOrSubPills(-materials.GetPills());
     }
 
     public bool Buy(Materials price)

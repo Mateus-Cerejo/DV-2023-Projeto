@@ -37,6 +37,7 @@ public class SaveObject
     public int attackBonus;
     public int healthBonus;
     public int speedBonus;
+    public int day;
 
     public SaveObject()
     {
@@ -52,10 +53,10 @@ public class SaveObject
         factoryNumOfItems = 0;
         factoryDiscountPerc = 0;
         marketDiscountPerc = 0;
-        wood = 100;
-        stone = 100;
-        metal = 50;
-        pills = 10;
+        wood = 10000;
+        stone = 10000;
+        metal = 5000;
+        pills = 1000;
         curPopulation = 50;
         maxPopulation = 100;
         itemsInMarket = "";
@@ -72,6 +73,7 @@ public class SaveObject
         attackBonus = 1;
         healthBonus = 1;
         speedBonus = 1;
+        day = 1;
     }
 
     public void Save()
@@ -109,11 +111,12 @@ public class SaveObject
         attackBonus = PlayerPrefs.GetInt("attackBonus");
         healthBonus = PlayerPrefs.GetInt("healthBonus");
         speedBonus = PlayerPrefs.GetInt("speedBonus");
+        day = PlayerPrefs.GetInt("day");
     }
 
     public void Load()
     {
-        Inventory.Instance.SetItemsUnequiped(unEquipedItems);
+        Inventory.Instance.AddRangeItemsUnequiped(unEquipedItems);
         Inventory.Instance.SetArtifactsEquiped(equipedArtifacts);
         Inventory.Instance.SetMeeleWeaponEquiped(equipedMeeleWeapon);
         Inventory.Instance.SetRangeWeaponEquiped(equipedRangeWeapon);
@@ -146,5 +149,6 @@ public class SaveObject
         PlayerPrefs.SetInt("attackBonus", attackBonus);
         PlayerPrefs.SetInt("healthBonus", healthBonus);
         PlayerPrefs.SetInt("speedBonus", speedBonus);
+        PlayerPrefs.SetInt("day", day);
     }
 }

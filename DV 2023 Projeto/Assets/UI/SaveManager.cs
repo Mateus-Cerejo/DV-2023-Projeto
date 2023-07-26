@@ -49,7 +49,7 @@ public class SaveManager : MonoBehaviour
     void OnApplicationQuit()
     {
         Save();
-        PlayerPrefs.DeleteAll();
+       // PlayerPrefs.DeleteAll();
     }
 
     public void Save()

@@ -7,27 +7,33 @@ public class ArtifactBackPack : ScriptableObject {
     [SerializeField] private int _powerArtifactQuantityStored = 0;
     [SerializeField] private int _powerArtifactQuantityEquiped = 0;
     [SerializeField] private float _powerArtifactEffect = 0.20f;
+    [SerializeField] private ItemSO _powerSO;
 
     [SerializeField] private int _speedArtifactQuantityStored = 0;
     [SerializeField] private int _speedArtifactQuantityEquiped = 0;
     [SerializeField] private float _speedArtifactEffect = 0.20f;
+    [SerializeField] private ItemSO _speedSO;
 
     [SerializeField] private int _lifeArtifactQuantityStored = 0;
     [SerializeField] private int _lifeArtifactQuantityEquiped = 0;
     [SerializeField] private float _lifeArtifactEffect = 0.20f;
+    [SerializeField] private ItemSO _lifeSO;
 
     [SerializeField] private int _looterArtifactQuantityStored = 0;
     [SerializeField] private int _looterArtifactQuantityEquiped = 0;
     [SerializeField] private float _looterArtifactEffect = 0.20f;
+    [SerializeField] private ItemSO _looterSO;
 
     [SerializeField] private int _allInOneArtifactQuantityStored = 0;
     [SerializeField] private int _allInOneArtifactQuantityEquiped = 0;
     [SerializeField] private float _allInOneArtifactEffect = 0.20f;
+    [SerializeField] private ItemSO _allInOneSO;
 
     [SerializeField] private int _iceAuraArtifactQuantityStored = 0;
     [SerializeField] private int _iceAuraArtifactQuantityEquiped = 0;
     [SerializeField] private float _iceAuraArtifactEffect = 0.5f;
     [SerializeField] private float _iceAuraArtifactDuration = 2f;
+    [SerializeField] private ItemSO _iceAuraSO;
 
     public int artifactEquipLimit
     {
@@ -52,6 +58,11 @@ public class ArtifactBackPack : ScriptableObject {
         get => _powerArtifactEffect;
         set => _powerArtifactEffect = value;
     }
+    public ItemSO powerSO
+    {
+        get => _powerSO;
+        set => _powerSO = value;
+    }
 
     public int speedArtifactQuantityStored
     {
@@ -69,6 +80,12 @@ public class ArtifactBackPack : ScriptableObject {
     {
         get => _speedArtifactEffect;
         set => _speedArtifactEffect = value;
+    }
+
+    public ItemSO speedSO
+    {
+        get => _speedSO;
+        set => _speedSO = value;
     }
 
     public int lifeArtifactQuantityStored
@@ -89,6 +106,12 @@ public class ArtifactBackPack : ScriptableObject {
         set => _lifeArtifactEffect = value;
     }
 
+    public ItemSO lifeSO
+    {
+        get => _lifeSO;
+        set => _lifeSO = value;
+    }
+
     public int looterArtifactQuantityStored
     {
         get => _looterArtifactQuantityStored;
@@ -107,6 +130,12 @@ public class ArtifactBackPack : ScriptableObject {
         set => _looterArtifactEffect = value;
     }
 
+    public ItemSO looterSO
+    {
+        get => _looterSO;
+        set => _looterSO = value;
+    }
+
     public int allInOneArtifactQuantityStored
     {
         get => _allInOneArtifactQuantityStored;
@@ -123,6 +152,12 @@ public class ArtifactBackPack : ScriptableObject {
     {
         get => _allInOneArtifactEffect;
         set => _allInOneArtifactEffect = value;
+    }
+
+    public ItemSO allInOneSO
+    {
+        get => _allInOneSO;
+        set => _allInOneSO = value;
     }
 
     public int iceAuraArtifactQuantityStored
@@ -147,6 +182,12 @@ public class ArtifactBackPack : ScriptableObject {
     {
         get => _iceAuraArtifactDuration;
         set => _iceAuraArtifactDuration = value;
+    }
+
+    public ItemSO iceAuraSO
+    {
+        get => _iceAuraSO;
+        set => _iceAuraSO = value;
     }
 
     public int getEquipedAmount()
@@ -236,5 +277,15 @@ public class ArtifactBackPack : ScriptableObject {
             iceAuraArtifactQuantityEquiped++;
             iceAuraArtifactQuantityStored--;
         }
+    }
+
+    public void Reset()
+    {
+        powerArtifactQuantityEquiped = 0;
+        speedArtifactQuantityEquiped = 0;
+        lifeArtifactQuantityEquiped = 0;
+        looterArtifactQuantityEquiped = 0;
+        iceAuraArtifactQuantityEquiped = 0;
+        allInOneArtifactQuantityEquiped = 0;
     }
 }
