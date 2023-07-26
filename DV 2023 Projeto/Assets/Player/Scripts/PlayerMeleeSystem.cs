@@ -31,6 +31,11 @@ public class PlayerMeleeSystem : MonoBehaviour
     private bool overHeated = false;
     [SerializeField] private Image overHeatRadialImage;
 
+    [SerializeField] private AudioSource idleAudioSource;
+    [SerializeField] private AudioSource swingOrRevAudioSource;
+
+    [SerializeField] private GameObject enemyHitGraphic;
+
     void Awake() {
         attackDamage *= PlayerPrefs.GetFloat("attackBonus", 1);
         overHeatRadialImage.gameObject.SetActive(false);
@@ -48,6 +53,10 @@ public class PlayerMeleeSystem : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (idleAudioSource != null && !idleAudioSource.isPlaying)
+        {
+            idleAudioSource.Play();
+        }
         OverHeatIndicator();
         if(canOverHeat && currentHeat>0 && !Input.GetButton("Fire1") && !overHeated)
         {
@@ -79,7 +88,10 @@ public class PlayerMeleeSystem : MonoBehaviour
 
     private void Attack()
     {
-        //animator.SetTrigger("Attack");
+        if (swingOrRevAudioSource != null && !swingOrRevAudioSource.isPlaying)
+        {
+            swingOrRevAudioSource.Play();
+        }
 
         Vector3 boxSize = new Vector3(attackSweepArea, attackHeightArea, attackRange);
         Quaternion rotation = fpsCam.transform.rotation;
@@ -92,11 +104,13 @@ public class PlayerMeleeSystem : MonoBehaviour
             {
                 enemy.GetComponent<BruteStats>().TakeDamage(attackDamage + attackDamage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + attackDamage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
                 Debug.Log("Hit melee brute");
+                Destroy(Instantiate(enemyHitGraphic, enemy.gameObject.transform.position + new Vector3(0, 1.5f, 0), Quaternion.LookRotation(enemy.gameObject.transform.position)), 1.0f);
             }
             else if (enemy.GetComponent<ZombieStats>() != null)
             {
                 enemy.GetComponent<ZombieStats>().TakeDamage(attackDamage + attackDamage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + attackDamage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
                 Debug.Log("Hit melee zombie");
+                Destroy(Instantiate(enemyHitGraphic, enemy.gameObject.transform.position + new Vector3(0,1.5f,0), Quaternion.LookRotation(enemy.gameObject.transform.position)), 1.0f);
             }
         }
         if (canOverHeat)
