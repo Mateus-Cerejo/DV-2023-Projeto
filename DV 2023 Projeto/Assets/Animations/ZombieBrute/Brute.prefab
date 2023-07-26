@@ -1107,6 +1107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bbaa8240b9ed6428b08d63a28e40dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieHitSound: {fileID: 8300000, guid: d108e9ae3908d4d479e1e41cca0188a3, type: 3}
+  zombieDeathSound: {fileID: 8300000, guid: ff8240148ee026c4babb53949381e1cd, type: 3}
   gameEvents: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}
   curHealth: 500
   zombiesCount: 5

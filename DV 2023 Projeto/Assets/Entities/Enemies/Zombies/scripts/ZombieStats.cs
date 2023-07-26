@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 using UnityEngine.AI;
 using static GameEvents;
@@ -9,8 +8,13 @@ public class ZombieStats : MonoBehaviour
 {
     private Animator animator;
     private ZombieNavMesh characterMovement;
+    private NavMeshAgent navMeshAgent;
+    private AudioSource audioSource;
     private FieldOfView characterFov;
     [SerializeField] private GameEvents gameEvents;
+
+    [SerializeField] private AudioClip zombieHitSound;
+    [SerializeField] private AudioClip zombieDeathSound;
 
     [SerializeField] private float curHealth;
     [SerializeField] private int zombiesCount;
@@ -23,7 +27,8 @@ public class ZombieStats : MonoBehaviour
         animator = GetComponent<Animator>();
         characterMovement = GetComponent<ZombieNavMesh>();
         characterFov = GetComponent<FieldOfView>();
-
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,19 +42,29 @@ public class ZombieStats : MonoBehaviour
         animator.SetBool("isDead", true);
         characterMovement.enabled = false;
         characterFov.enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
+
+        navMeshAgent.velocity = Vector3.zero;
+        navMeshAgent.isStopped = true;
+        audioSource.PlayOneShot(zombieDeathSound);
 
         gameEvents.InvokeEnemyDied(zombiesCount);
 
         spawnArtifact();
 
+        Invoke("Destroy", 3f);
+    }
+
+    private void Destroy()
+    {
         Destroy(gameObject);
     }
 
     private void spawnArtifact()
     {
-        int spawnArtifact = 1;//Mathf.RoundToInt(Random.value);
+        int spawnArtifact = Random.Range(0, 100);//Mathf.RoundToInt(Random.value);
 
-        if (spawnArtifact == 1)
+        if (spawnArtifact > 95)
         {
             if (abp.iceAuraArtifactQuantityStored < 1)
             {
@@ -82,6 +97,7 @@ public class ZombieStats : MonoBehaviour
             curHealth -= damage;
             if (abp.iceAuraArtifactQuantityEquiped >= 1) characterMovement.ApplyFreezeEffect();
             if (curHealth <= 0) Die();
+            else audioSource.PlayOneShot(zombieHitSound);
         }
     }
 

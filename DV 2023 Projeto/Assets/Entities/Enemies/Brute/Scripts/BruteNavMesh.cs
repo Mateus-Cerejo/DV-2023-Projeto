@@ -54,6 +54,8 @@ public class BruteNavMesh : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
+        stoppingDistance = 2f;
+
         attackCooldown = 2f;
         isScreaming = true;
         isAttacking = false;

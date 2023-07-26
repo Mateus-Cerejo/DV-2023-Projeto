@@ -7,6 +7,11 @@ public class BruteStats : MonoBehaviour
 {
     private Animator animator;
     private BruteNavMesh characterMovement;
+    private NavMeshAgent navMeshAgent;
+    private AudioSource audioSource;
+    //private BoxCollider 
+    [SerializeField] private AudioClip zombieHitSound;
+    [SerializeField] private AudioClip zombieDeathSound;
     [SerializeField] private GameEvents gameEvents;
 
     [SerializeField] private float curHealth;
@@ -20,6 +25,8 @@ public class BruteStats : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         characterMovement = GetComponent<BruteNavMesh>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,19 +37,31 @@ public class BruteStats : MonoBehaviour
 
     public void Die()
     {
+        Debug.LogWarning("Dead");
+
         animator.SetBool("isDead", true);
         characterMovement.enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
+
+        navMeshAgent.velocity = Vector3.zero;
+        navMeshAgent.isStopped = true;
+        audioSource.PlayOneShot(zombieDeathSound);
 
         gameEvents.InvokeEnemyDied(zombiesCount);
 
         spawnArtifact();
 
+        Invoke("Destroy", 3f);
+    }
+
+    private void Destroy()
+    {
         Destroy(gameObject);
     }
 
     private void spawnArtifact()
     {
-        int spawnArtifact = Random.Range(0,100);//Mathf.RoundToInt(Random.value);
+        int spawnArtifact = Random.Range(0, 100);//Mathf.RoundToInt(Random.value);
 
         if (spawnArtifact > 95)
         {
@@ -72,11 +91,14 @@ public class BruteStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (curHealth > 0)
+        
+
+        if(curHealth > 0)
         {
             curHealth -= damage;
             if (abp.iceAuraArtifactQuantityEquiped >= 1) characterMovement.ApplyFreezeEffect();
             if (curHealth <= 0) Die();
+            else audioSource.PlayOneShot(zombieHitSound);
         }
     }
 }
