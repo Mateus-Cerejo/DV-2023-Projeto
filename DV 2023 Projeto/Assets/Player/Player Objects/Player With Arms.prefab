@@ -3992,14 +3992,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7209919896730496222}
     m_Modifications:
-    - target: {fileID: 67438714537196876, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
-      propertyPath: m_Volume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 67438714537196876, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
-      propertyPath: DopplerLevel
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 78382515505144082, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4168,14 +4160,6 @@ PrefabInstance:
       propertyPath: reloadRadialImage
       value: 
       objectReference: {fileID: 7453201164528208599}
-    - target: {fileID: 8871456430011243741, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
-      propertyPath: m_Volume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871456430011243741, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
-      propertyPath: DopplerLevel
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9138371661495524612, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
       propertyPath: fpsCam
       value: 
