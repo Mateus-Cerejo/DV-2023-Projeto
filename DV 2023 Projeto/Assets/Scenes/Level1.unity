@@ -6296,6 +6296,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2443441600569731621, guid: 2a22ca38dbc1fdb4390a597ee3d9a7c9, type: 3}
+      propertyPath: loot
+      value: 
+      objectReference: {fileID: 11400000, guid: 10c1fa58dc5ffd741b36cecce3ba0855, type: 2}
+    - target: {fileID: 2443441600569731621, guid: 2a22ca38dbc1fdb4390a597ee3d9a7c9, type: 3}
       propertyPath: gameEvents
       value: 
       objectReference: {fileID: 11400000, guid: 837b9702065c14b4c8dbd9a77aa9a4d8, type: 2}

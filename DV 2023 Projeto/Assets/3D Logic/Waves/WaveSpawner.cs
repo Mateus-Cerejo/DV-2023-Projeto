@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
+    [SerializeField] private PlayerLoot loot;
+    [SerializeField] private ArtifactBackPack abp;
     [SerializeField] private enum WaveState {START, ONGOING, END}
 
     [SerializeField] private Wave wave;
@@ -73,6 +75,7 @@ public class WaveSpawner : MonoBehaviour
             {            
                 if (isWaveOver)
                 {
+                    Cursor.lockState = CursorLockMode.None;
                     SceneManager.LoadScene(sceneName: "City Scene");
                 }
                 //Debug.Log("Changing wave state");
@@ -225,6 +228,10 @@ public class WaveSpawner : MonoBehaviour
             waveState += 1;
             gameEvents.InvokeWaveStateChanged((int)waveState); // Notify listeners of wave state change
             curStateTime = Time.time;
+
+            UpdateValuesInCity();
+
+
         }
     }
 
@@ -242,5 +249,32 @@ public class WaveSpawner : MonoBehaviour
     private void OnWaveStateChanged(int waveState)
     {
         waveGUIScript.DisplayWaveStateGUI(waveState);
+    }
+
+    private void UpdateValuesInCity()
+    {
+        int curResearchPerc = PlayerPrefs.GetInt("curResearchPerc");
+        int researchPerRound = PlayerPrefs.GetInt("researchPerRound");
+        PlayerPrefs.SetInt("curResearchPerc", curResearchPerc + researchPerRound);
+
+        int curPopulation = PlayerPrefs.GetInt("curPopulation");
+
+        float lootMultiplier = 1 + abp.looterArtifactQuantityEquiped * abp.looterArtifactEffect;
+
+        int curWood = PlayerPrefs.GetInt("wood");
+        int curStone = PlayerPrefs.GetInt("stone");
+        int curMetal = PlayerPrefs.GetInt("metal");
+        int curPills = PlayerPrefs.GetInt("pills");
+
+        PlayerPrefs.SetInt("wood", (int)((curWood + curPopulation) * lootMultiplier));
+        PlayerPrefs.SetInt("stone", (int)((curStone + curPopulation) * lootMultiplier));
+        PlayerPrefs.SetInt("metal", (int)((curMetal + curPopulation) * lootMultiplier));
+
+        PlayerPrefs.SetInt("pills", curPills + loot.Pills);
+        loot.Pills = 0;
+
+        int populationPerRound = PlayerPrefs.GetInt("populationPerRound");
+
+        PlayerPrefs.SetInt("curPopulation", curPopulation + populationPerRound);
     }
 }
