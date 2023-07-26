@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54af07e65a98c5f438351b29757eb7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loot: {fileID: 11400000, guid: 10c1fa58dc5ffd741b36cecce3ba0855, type: 2}
+  abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}
   wave:
     zombies:
     - {fileID: 6629727724947628907, guid: 1cc478d4459004d468918f932b0cdce7, type: 3}

@@ -232,34 +232,35 @@ public class Inventory : MonoBehaviour
         artifactBackPack.Reset();
         foreach (ItemSO item in artifactsEquiped)
         {
+            Debug.Log("aquiii");
             switch (item.GetName())
             {
-                case "Speed":
+                case "Speed artifact":
                     {
                         artifactBackPack.speedArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "Power":
+                case "Power artifact":
                     {
                         artifactBackPack.powerArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "Looter":
+                case "Looter artifact":
                     {
                         artifactBackPack.looterArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "Life":
+                case "Life artifact":
                     {
                         artifactBackPack.lifeArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "Ice Aura":
+                case "Ice Aura artifact":
                     {
                         artifactBackPack.iceAuraArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "All In One":
+                case "All In One artifact":
                     {
                         artifactBackPack.allInOneArtifactQuantityEquiped += 1;
                     }
@@ -353,32 +354,32 @@ public class Inventory : MonoBehaviour
 
             switch (item.GetName())
             {
-                case "Speed":
+                case "Speed artifact":
                     {
                         artifactBackPack.speedArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "Power":
+                case "Power artifact":
                     {
                         artifactBackPack.powerArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "Looter":
+                case "Looter artifact":
                     {
                         artifactBackPack.looterArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "Life":
+                case "Life artifact":
                     {
                         artifactBackPack.lifeArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "Ice Aura":
+                case "Ice Aura artifact":
                     {
                         artifactBackPack.iceAuraArtifactQuantityEquiped += 1;
                     }
                     break;
-                case "All In One":
+                case "All In One artifact":
                     {
                         artifactBackPack.allInOneArtifactQuantityEquiped += 1;
                     }
@@ -430,32 +431,32 @@ public class Inventory : MonoBehaviour
                 artifactsEquiped.Remove(item);
                 switch (item.GetName())
                 {
-                    case "Speed":
+                    case "Speed artifact":
                         {
                             artifactBackPack.speedArtifactQuantityEquiped -= 1;
                         }
                         break;
-                    case "Power":
+                    case "Power artifact":
                         {
                             artifactBackPack.powerArtifactQuantityEquiped -= 1;
                         }
                         break;
-                    case "Looter":
+                    case "Looter artifact":
                         {
                             artifactBackPack.looterArtifactQuantityEquiped -= 1;
                         }
                         break;
-                    case "Life":
+                    case "Life artifact":
                         {
                             artifactBackPack.lifeArtifactQuantityEquiped -= 1;
                         }
                         break;
-                    case "Ice Aura":
+                    case "Ice Aura artifact":
                         {
                             artifactBackPack.iceAuraArtifactQuantityEquiped -= 1;
                         }
                         break;
-                    case "All In One":
+                    case "All In One artifact":
                         {
                             artifactBackPack.allInOneArtifactQuantityEquiped -= 1;
                         }

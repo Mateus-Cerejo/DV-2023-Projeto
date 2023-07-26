@@ -67,11 +67,14 @@ public class DeathMenuGUIScript : MonoBehaviour
             deathMessage.enabled = false;
             Cursor.lockState = CursorLockMode.None;
             weaponHolder.SetActive(false);
+            GameObject.Find("PcCamera").GetComponent<AudioListener>().enabled = false;
+            Time.timeScale = 0;
         }
     }
 
     public void GoToTitleScreen()
     {
-        SceneManager.LoadScene(sceneName: "Main menu");
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Main menu");
     }
 }

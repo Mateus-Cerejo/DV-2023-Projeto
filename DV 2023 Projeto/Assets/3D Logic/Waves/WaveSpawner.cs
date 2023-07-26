@@ -37,10 +37,10 @@ public class WaveSpawner : MonoBehaviour
         {
             spawners[i] = transform.GetChild(i).gameObject;
         }
+        waveNumber = PlayerPrefs.GetInt("day");
         wave.SetWaveStats(waveNumber);
 
         enemySpawnTimeInterval = 7f - ((float)waveNumber * 0.05f); 
-
         waveStateIntermission = 5f;
         waveState = WaveState.START;
         nWaveStates = System.Enum.GetValues(typeof(WaveState)).Length;
@@ -55,12 +55,6 @@ public class WaveSpawner : MonoBehaviour
 
         StartCoroutine("waveStateChange", waveStateIntermission);
         StartCoroutine("EnemySpawnBehaviour", enemySpawnTimeInterval);
-        /*
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            enemies[i] = transform.GetChild(i).gameObject;
-        }
-        */
     }
 
     private IEnumerator waveStateChange(float intermission)
@@ -197,7 +191,7 @@ public class WaveSpawner : MonoBehaviour
                 Destroy(enemy);
             
             isWaveOver = true;
-
+            UpdateValuesInCity();
 
         }
         
@@ -266,9 +260,9 @@ public class WaveSpawner : MonoBehaviour
         int curMetal = PlayerPrefs.GetInt("metal");
         int curPills = PlayerPrefs.GetInt("pills");
 
-        PlayerPrefs.SetInt("wood", (int)((curWood + curPopulation) * lootMultiplier));
-        PlayerPrefs.SetInt("stone", (int)((curStone + curPopulation) * lootMultiplier));
-        PlayerPrefs.SetInt("metal", (int)((curMetal + curPopulation) * lootMultiplier));
+        PlayerPrefs.SetInt("wood", (int)((curWood + curPopulation) * lootMultiplier * 2));
+        PlayerPrefs.SetInt("stone", (int)((curStone + curPopulation) * lootMultiplier * 1.4));
+        PlayerPrefs.SetInt("metal", (int)((curMetal + curPopulation) * lootMultiplier * 1));
 
         PlayerPrefs.SetInt("pills", curPills + loot.Pills);
         loot.Pills = 0;
@@ -276,5 +270,8 @@ public class WaveSpawner : MonoBehaviour
         int populationPerRound = PlayerPrefs.GetInt("populationPerRound");
 
         PlayerPrefs.SetInt("curPopulation", curPopulation + populationPerRound);
+        PlayerPrefs.SetInt("day", PlayerPrefs.GetInt("day")+ 1);
+
+        SaveManager.Instance.Save();
     }
 }

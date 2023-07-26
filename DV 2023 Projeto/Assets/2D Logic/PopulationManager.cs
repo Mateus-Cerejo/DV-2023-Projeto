@@ -29,10 +29,13 @@ public class PopulationManager : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitUntil(() => SaveManager.Instance.ready);
-
-        curPopulation = PlayerPrefs.GetInt("curPopulation", 50);
         maxPopulation = PlayerPrefs.GetInt("maxPopulation", 50);
+
+        curPopulation = 0;
+        AddOrSubCurPopulation(PlayerPrefs.GetInt("curPopulation", 50));
         UpdateText();
+        Debug.Log(PlayerPrefs.GetInt("curPopulation"));
+        Debug.Log(PlayerPrefs.GetInt("populationPerRound"));
     }
 
     public void AddOrSubCurPopulation(int amount)

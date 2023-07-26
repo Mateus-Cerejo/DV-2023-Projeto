@@ -140,7 +140,7 @@ MonoBehaviour:
   attackHeightArea: 1
   abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}
   attackDamage: 30
-  attackRate: 100
+  attackRate: 2
   canOverHeat: 0
   maxOverHeat: 100
   heatIncrement: 0

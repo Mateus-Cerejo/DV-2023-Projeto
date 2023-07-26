@@ -8,8 +8,16 @@ public class GoToBattle : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
 
+    private IEnumerator Start()
+    {
+        yield return new WaitUntil(() => SaveManager.Instance.ready);
+
+        SetText();
+    }
+
     public void GoToBattleScene()
     {
+        SaveManager.Instance.Save();
         SceneManager.LoadScene("Level1");
     }
 

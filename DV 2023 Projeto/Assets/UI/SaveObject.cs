@@ -53,10 +53,10 @@ public class SaveObject
         factoryNumOfItems = 0;
         factoryDiscountPerc = 0;
         marketDiscountPerc = 0;
-        wood = 10000;
-        stone = 10000;
-        metal = 5000;
-        pills = 1000;
+        wood = 100;
+        stone = 100;
+        metal = 50;
+        pills = 10;
         curPopulation = 50;
         maxPopulation = 100;
         itemsInMarket = "";
