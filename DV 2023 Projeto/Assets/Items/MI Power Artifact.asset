@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: 4b37281d45debcd4bb194f5c5f1a7ccd, type: 3}
   itemRarity: 45
+  itemType: 2
   itemName: Power artifact
   itemDescription: Increases player power by 10%
   itemPrice:

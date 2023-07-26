@@ -16,8 +16,6 @@ public class MaterialsManager : MonoBehaviour
 
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
-
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -28,8 +26,10 @@ public class MaterialsManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitUntil(() => SaveManager.Instance.ready);
+
         int initialWood = 10000;
         int initialStone = 10000;
         int initialMetal = 10000;

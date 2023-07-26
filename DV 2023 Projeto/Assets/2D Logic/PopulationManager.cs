@@ -26,8 +26,10 @@ public class PopulationManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitUntil(() => SaveManager.Instance.ready);
+
         curPopulation = PlayerPrefs.GetInt("curPopulation", 50);
         maxPopulation = PlayerPrefs.GetInt("maxPopulation", 50);
         UpdateText();

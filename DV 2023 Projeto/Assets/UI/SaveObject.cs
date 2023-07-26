@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class SaveObject
 {
-    public int populationPerRound;
+    public List<ItemSO> unEquipedItems;
+    public List<ItemSO> equipedArtifacts;
+    public ItemSO equipedMeeleWeapon;
+    public ItemSO equipedRangeWeapon;
+
+    public int populationPerRound;    
     public int revivingSpeedPerc;
     public int curResearchPerc;
     public int researchPerRound;
@@ -32,6 +37,10 @@ public class SaveObject
 
     public SaveObject()
     {
+        unEquipedItems = new List<ItemSO>();
+        equipedArtifacts = new List<ItemSO>();
+        equipedMeeleWeapon = null;
+        equipedRangeWeapon = null;
         populationPerRound = 10;
         revivingSpeedPerc = 0;
         curResearchPerc = 0;
@@ -40,10 +49,10 @@ public class SaveObject
         factoryNumOfItems = 0;
         factoryDiscountPerc = 0;
         marketDiscountPerc = 0;
-        wood = 100;
-        stone = 100;
-        metal = 50;
-        pills = 10;
+        wood = 5000;
+        stone = 5000;
+        metal = 5000;
+        pills = 1000;
         curPopulation = 50;
         maxPopulation = 100;
         itemsInMarket = "";
@@ -61,6 +70,11 @@ public class SaveObject
 
     public void Save()
     {
+        unEquipedItems = Inventory.Instance.GetItemsUnequiped();
+        equipedArtifacts = Inventory.Instance.GetArtifactsEquiped();
+        equipedMeeleWeapon = Inventory.Instance.GetMeeleWeaponEquiped();
+        equipedRangeWeapon = Inventory.Instance.GetRangeWeaponEquiped();
+
         populationPerRound = PlayerPrefs.GetInt("populationPerRound");
         revivingSpeedPerc = PlayerPrefs.GetInt("revivingSpeedPerc");
         curResearchPerc = PlayerPrefs.GetInt("curResearchPerc");
@@ -90,6 +104,11 @@ public class SaveObject
 
     public void Load()
     {
+        Inventory.Instance.SetItemsUnequiped(unEquipedItems);
+        Inventory.Instance.SetArtifactsEquiped(equipedArtifacts);
+        Inventory.Instance.SetMeeleWeaponEquiped(equipedMeeleWeapon);
+        Inventory.Instance.SetRangeWeaponEquiped(equipedRangeWeapon);
+
         PlayerPrefs.SetInt("populationPerRound", populationPerRound);
         PlayerPrefs.SetInt("revivingSpeedPerc", revivingSpeedPerc);
         PlayerPrefs.SetInt("curResearchPerc", curResearchPerc);

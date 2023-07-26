@@ -14,6 +14,7 @@ TagManager:
   - ItemPopup
   - Gate
   - Obstacle
+  - ItemSlot
   layers:
   - Default
   - TransparentFX

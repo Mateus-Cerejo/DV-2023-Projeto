@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6e8bca7a0042ed49b5de797f68466cb, type: 3}
-  m_Name: FI Rifle
+  m_Name: FI BaseballBat
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 21300000, guid: f8a9cfc721a20ce409c3d743e9b251bc, type: 3}
+  itemSprite: {fileID: 21300000, guid: 35145e27b000f134f88f55de2728d08c, type: 3}
   itemRarity: 45
-  itemName: Rifle
-  itemDescription: Good speed, average damage
+  itemType: 0
+  itemName: BaseballBat
+  itemDescription: Weak but cheap
   itemPrice:
-    wood: 100
+    wood: 50
     stone: 0
-    metal: 100
+    metal: 0
     pills: 0

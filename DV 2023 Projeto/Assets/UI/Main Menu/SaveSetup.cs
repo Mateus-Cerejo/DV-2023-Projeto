@@ -24,10 +24,6 @@ public class SaveSetup : MonoBehaviour
 
         playBtn.onClick.AddListener(() => {
             PlayerPrefs.SetString("save Directory", path);
-
-            SaveObject save = JsonUtility.FromJson<SaveObject>(File.ReadAllText(path + "/" + Path.GetFileName(path) + ".txt"));
-            save.Load();
-
             SceneManager.LoadScene("City Scene");
         });
     }
