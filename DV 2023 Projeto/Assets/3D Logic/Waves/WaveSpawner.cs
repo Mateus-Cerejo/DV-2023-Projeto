@@ -73,7 +73,7 @@ public class WaveSpawner : MonoBehaviour
             {            
                 if (isWaveOver)
                 {
-                    SceneManager.LoadScene(sceneName: "Main Scene");
+                    SceneManager.LoadScene(sceneName: "City Scene");
                 }
                 //Debug.Log("Changing wave state");
                 //Debug.Log("Currently in state: " + waveState);
