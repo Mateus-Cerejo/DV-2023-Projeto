@@ -12,6 +12,7 @@ public class DeathMenuGUIScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI deathMessage;
     [SerializeField] private TextMeshProUGUI gameOverMessage;
     [SerializeField] private GameObject buttonOptions;
+    [SerializeField] private GameObject weaponHolder;
     private float respawnTimer;
     // Start is called before the first frame update
     void Start()
@@ -64,6 +65,8 @@ public class DeathMenuGUIScript : MonoBehaviour
             buttonOptions.SetActive(true);
             respawnMessage.enabled = false;
             deathMessage.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            weaponHolder.SetActive(false);
         }
     }
 

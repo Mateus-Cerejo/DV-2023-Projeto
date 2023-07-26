@@ -33,6 +33,11 @@ public class GunV2 : MonoBehaviour
         ammoCounter.text = gameObject.name+":"+bulletsLeft+"/"+maxAmmo;
     }
 
+    private void Awake()
+    {
+        damage *= PlayerPrefs.GetFloat("attackBonus", 1);
+    }
+
     private void Start()
     {
         bulletsLeft = magazineSize;
@@ -187,11 +192,6 @@ public class GunV2 : MonoBehaviour
         reloading = true;
         reloadRadialImage.gameObject.SetActive(true);
 
-        if (reloadingAudioSource != null)
-        {
-            reloadingAudioSource.Play();
-        }
-
         float remainingReloadProgress = (reloadTime - reloadProgress) * (1f - reloadRadialImage.fillAmount);
 
        reloadProgress = remainingReloadProgress;
@@ -224,6 +224,10 @@ public class GunV2 : MonoBehaviour
         {
             reloadProgress += Time.deltaTime;
             reloadRadialImage.fillAmount = Mathf.Clamp01(reloadProgress / reloadTime);
+            if (reloadingAudioSource != null && !reloadingAudioSource.isPlaying)
+            {
+                reloadingAudioSource.Play();
+            }
         }
     }
 

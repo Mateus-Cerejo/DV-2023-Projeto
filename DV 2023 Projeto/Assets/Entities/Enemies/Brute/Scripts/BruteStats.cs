@@ -42,9 +42,9 @@ public class BruteStats : MonoBehaviour
 
     private void spawnArtifact()
     {
-        int spawnArtifact = 1;//Mathf.RoundToInt(Random.value);
+        int spawnArtifact = Random.Range(0,100);//Mathf.RoundToInt(Random.value);
 
-        if (spawnArtifact == 1)
+        if (spawnArtifact > 95)
         {
             if (abp.iceAuraArtifactQuantityStored < 1)
             {
@@ -72,8 +72,11 @@ public class BruteStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        curHealth -= damage;
-        if(abp.iceAuraArtifactQuantityEquiped>=1) characterMovement.ApplyFreezeEffect();
-        if (curHealth <= 0) Die();
+        if (curHealth > 0)
+        {
+            curHealth -= damage;
+            if (abp.iceAuraArtifactQuantityEquiped >= 1) characterMovement.ApplyFreezeEffect();
+            if (curHealth <= 0) Die();
+        }
     }
 }

@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 move;
     private Vector3 velocity;
     [SerializeField] private ArtifactBackPack abp;
-    [SerializeField] private float runningSpeed = 12.0f;
+    [SerializeField] private float runningSpeed = 6.0f;
 
     [SerializeField] private float sprintSpeedMultiplier = 2.0f;
     [SerializeField] private float maxSprintValue = 10.0f;
@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        runningSpeed *= PlayerPrefs.GetFloat("speedBonus", 1);
         currentSprintValue = maxSprintValue;
     }
 

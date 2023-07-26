@@ -21,6 +21,7 @@ public class PlayerStats : MonoBehaviour
 
     void Awake()
     {
+        maxHealth *= PlayerPrefs.GetFloat("healthBonus", 1);
         maxHealth += maxHealth * abp.lifeArtifactQuantityEquiped * abp.lifeArtifactEffect + maxHealth * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect;
         currentHealth = maxHealth;
         pm = GetComponent<PlayerMovement>();
