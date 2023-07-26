@@ -3341,6 +3341,42 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: damage
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: spread
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: maxAmmo
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: fireRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: reloadTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: magazineSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: bulletsToShoot
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: allowButtonHold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3310580144608703170, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -100.69995
@@ -3348,6 +3384,38 @@ PrefabInstance:
     - target: {fileID: 3310580144608703170, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 25.199951
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391043424429500173, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851691927437466640, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851691927437466640, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851691927437466640, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851691927437466640, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197009619829524138, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508164792824482706, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992643948882747431, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: reloadTime
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7209919896894500961, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: m_Name
@@ -3397,6 +3465,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7813497024635451947, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843079313373185202, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903682560227822851, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: Pan2D
       value: -0.29
@@ -3408,6 +3484,18 @@ PrefabInstance:
     - target: {fileID: 7903682560227822851, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480255088970418059, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480255088970418059, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143498831444811057, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}

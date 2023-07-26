@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640523066724562293}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.19000006, y: -0.2009312, z: 0.3}
+  m_LocalScale: {x: 0.1903447, y: 0.20832, z: 0.21}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5306770789361190398}
@@ -120,6 +120,8 @@ MonoBehaviour:
   muzzleFlashPosition: {fileID: 5306770789361190398}
   ammoCounter: {fileID: 0}
   reloadRadialImage: {fileID: 0}
+  shootingAudioSource: {fileID: 0}
+  reloadingAudioSource: {fileID: 0}
 --- !u!1 &8294426177624867282
 GameObject:
   m_ObjectHideFlags: 0

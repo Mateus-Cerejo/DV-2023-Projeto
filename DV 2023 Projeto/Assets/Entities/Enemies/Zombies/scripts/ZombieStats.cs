@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 using UnityEngine.AI;
 using static GameEvents;
@@ -76,9 +77,12 @@ public class ZombieStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        curHealth -= damage;
-        if (abp.iceAuraArtifactQuantityEquiped >= 1) characterMovement.ApplyFreezeEffect();
-        if (curHealth <= 0) Die();
+        if (curHealth > 0)
+        {
+            curHealth -= damage;
+            if (abp.iceAuraArtifactQuantityEquiped >= 1) characterMovement.ApplyFreezeEffect();
+            if (curHealth <= 0) Die();
+        }
     }
 
 }

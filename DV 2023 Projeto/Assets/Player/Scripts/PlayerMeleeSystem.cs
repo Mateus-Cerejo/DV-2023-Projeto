@@ -32,6 +32,7 @@ public class PlayerMeleeSystem : MonoBehaviour
     [SerializeField] private Image overHeatRadialImage;
 
     void Awake() {
+        attackDamage *= PlayerPrefs.GetFloat("attackBonus", 1);
         overHeatRadialImage.gameObject.SetActive(false);
         weaponNameText.text = gameObject.name;
     }
