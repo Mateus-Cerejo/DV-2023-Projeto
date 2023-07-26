@@ -134,12 +134,12 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  attackRange: 1
+  attackRange: 1.5
   attackSweepArea: 1
   attackHeightArea: 1
   abp: {fileID: 11400000, guid: e65838aa671baef48b5edb4d5ced5c23, type: 2}
-  attackDamage: 10
-  attackRate: 1
+  attackDamage: 30
+  attackRate: 5
   canOverHeat: 0
   maxOverHeat: 100
   heatIncrement: 0
