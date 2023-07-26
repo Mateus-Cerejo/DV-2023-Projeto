@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f11c6c3c691a94cb9139fcdde6de26, type: 3}
   m_Name: WeaponManagerIndex
   m_EditorClassIdentifier: 
-  _currentRangedIndex: 3
+  _currentRangedIndex: 4
   _currentMeleeIndex: 1

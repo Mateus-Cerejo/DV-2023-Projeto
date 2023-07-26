@@ -85,16 +85,18 @@ public class PlayerMeleeSystem : MonoBehaviour
         Quaternion rotation = fpsCam.transform.rotation;
         Vector3 position = attackPoint.position;
 
-        Collider[] hitEnemies = Physics.OverlapBox(position, boxSize / 2f, rotation, enemyLayer);
+        Collider[] hitEnemies = Physics.OverlapBox(position, boxSize / 2f, rotation);
         foreach (Collider enemy in hitEnemies)
         {
             if (enemy.GetComponent<BruteStats>() != null)
             {
                 enemy.GetComponent<BruteStats>().TakeDamage(attackDamage + attackDamage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + attackDamage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+                Debug.Log("Hit melee brute");
             }
             else if (enemy.GetComponent<ZombieStats>() != null)
             {
                 enemy.GetComponent<ZombieStats>().TakeDamage(attackDamage + attackDamage * abp.powerArtifactQuantityEquiped * abp.powerArtifactEffect + attackDamage * abp.allInOneArtifactQuantityEquiped * abp.allInOneArtifactEffect);
+                Debug.Log("Hit melee zombie");
             }
         }
         if (canOverHeat)

@@ -1081,7 +1081,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isGrounded: 0
-  jumpHeight: 3
+  jumpHeight: 0
 --- !u!114 &2639086157298902531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,10 +1434,6 @@ PrefabInstance:
       propertyPath: reloadRadialImage
       value: 
       objectReference: {fileID: 7453201164528208599}
-    - target: {fileID: 6980612504126716307, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8564680985110661940, guid: 3440f83e33051634cb55e9a117b96b2a, type: 3}
       propertyPath: fpsCam
       value: 

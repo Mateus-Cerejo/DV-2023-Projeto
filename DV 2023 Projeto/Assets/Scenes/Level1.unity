@@ -3329,29 +3329,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1611634252445756562, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: Pan2D
-      value: -0.29
+    - target: {fileID: 981798293091781084, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1611634252445756562, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_Volume
-      value: 0.05
+    - target: {fileID: 1410214737658162507, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: range
+      value: 1e+12
       objectReference: {fileID: 0}
-    - target: {fileID: 1611634252445756562, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+    - target: {fileID: 1410214737658162507, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410214737658162507, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: maxAmmo
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410214737658162507, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: fireRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410214737658162507, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: reloadTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410214737658162507, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: magazineSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410214737658162507, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: bulletsToShoot
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: range
-      value: 100
+      value: 1e+12
       objectReference: {fileID: 0}
     - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: damage
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: spread
-      value: 0.5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: maxAmmo
@@ -3367,7 +3387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: magazineSize
-      value: 12
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: bulletsToShoot
@@ -3375,7 +3395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1989405438027578235, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: allowButtonHold
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3310580144608703170, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3385,33 +3405,69 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 25.199951
       objectReference: {fileID: 0}
-    - target: {fileID: 3391043424429500173, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 3605795535781636548, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: range
+      value: 1e+12
       objectReference: {fileID: 0}
-    - target: {fileID: 4851691927437466640, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.21
+    - target: {fileID: 3605795535781636548, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: damage
+      value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 4851691927437466640, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
+    - target: {fileID: 3605795535781636548, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: maxAmmo
+      value: 210
       objectReference: {fileID: 0}
-    - target: {fileID: 4851691927437466640, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.2
+    - target: {fileID: 3605795535781636548, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: fireRate
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4851691927437466640, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.43
+    - target: {fileID: 3605795535781636548, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: reloadTime
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5197009619829524138, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 3605795535781636548, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: magazineSize
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605795535781636548, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: bulletsToShoot
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6508164792824482706, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 5124042378219920058, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: jumpHeight
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420992031950509167, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: range
+      value: 1e+12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420992031950509167, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420992031950509167, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: maxAmmo
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420992031950509167, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: fireRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420992031950509167, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: reloadTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420992031950509167, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: magazineSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420992031950509167, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: bulletsToShoot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992643948882747431, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: range
+      value: 1e+12
       objectReference: {fileID: 0}
     - target: {fileID: 6992643948882747431, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: reloadTime
@@ -3465,24 +3521,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7813497024635451947, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+    - target: {fileID: 7806543781611983197, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7843079313373185202, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903682560227822851, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: Pan2D
-      value: -0.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903682560227822851, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_Volume
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903682560227822851, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8480255088970418059, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
@@ -3493,9 +3533,33 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.33
       objectReference: {fileID: 0}
-    - target: {fileID: 9143498831444811057, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 9039003121864178240, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: range
+      value: 1e+12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039003121864178240, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: damage
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039003121864178240, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: maxAmmo
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039003121864178240, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: fireRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039003121864178240, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: reloadTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039003121864178240, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: magazineSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039003121864178240, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
+      propertyPath: bulletsToShoot
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17f49a92b42e68e40b8602b8b73d4849, type: 3}
