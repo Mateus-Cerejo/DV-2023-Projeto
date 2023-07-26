@@ -1815,6 +1815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 647990324}
+  - component: {fileID: 647990325}
   m_Layer: 9
   m_Name: Barriers
   m_TagString: Untagged
@@ -1841,6 +1842,18 @@ Transform:
   m_Father: {fileID: 1983433911}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &647990325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647990323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b1db635d1db8a4cb2f838674d96273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &649340292
 GameObject:
   m_ObjectHideFlags: 0
