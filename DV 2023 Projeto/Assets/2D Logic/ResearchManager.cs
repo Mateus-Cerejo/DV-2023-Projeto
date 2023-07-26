@@ -13,8 +13,10 @@ public class ResearchManager : MonoBehaviour
     public delegate void Win();
     public static event Win onWin;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitUntil(() => SaveManager.Instance.ready);
+
         curResearchPerc = PlayerPrefs.GetInt("curResearchPerc", 10);
 
         percSlider.GetComponent<Slider>().value = curResearchPerc;

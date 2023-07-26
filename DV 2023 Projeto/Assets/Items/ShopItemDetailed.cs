@@ -18,14 +18,14 @@ public class ShopItemDetailed : MonoBehaviour
     [SerializeField] private TextMeshProUGUI detailsText;
     [SerializeField] private GameObject errorBuying;
 
-    private ShopItemSO itemSO;
+    private ItemSO itemSO;
     private string type;
     private Color commun = new Color(188 / 255f, 188 / 255f, 188 / 255f);
     private Color rare = new Color(92 / 255f, 188/255f, 255/255f);
     private Color epic = new Color(161 / 255f, 92 / 255f, 255 / 255f);
     private Color legendary = new Color(255 / 255f, 223 / 255f, 92 / 255f);
 
-    public void SetUp(ShopItemSO itemSO, string type)
+    public void SetUp(ItemSO itemSO, string type)
     {
         this.type = type;
         this.itemSO = itemSO;
@@ -77,6 +77,7 @@ public class ShopItemDetailed : MonoBehaviour
         if (MaterialsManager.Instance.Buy(itemSO.GetPriceWithDiscount(type)))
         {
             Destroy(gameObject);
+            Inventory.Instance.AddItem(itemSO);
         }
         else
         {

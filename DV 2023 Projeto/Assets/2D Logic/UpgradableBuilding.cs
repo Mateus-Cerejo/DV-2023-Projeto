@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,8 +11,10 @@ public class UpgradableBuilding : MonoBehaviour
     private GameObject building;
     private int curLevel = 0;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitUntil(() => SaveManager.Instance.ready);
+
         curLevel = PlayerPrefs.GetInt(gameObject.name, 0);
         building = Instantiate(levels.getLevels()[curLevel], transform.position, transform.rotation, transform);
     }

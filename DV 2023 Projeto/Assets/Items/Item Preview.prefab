@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 65, y: 65}
+  m_SizeDelta: {x: 95, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6291812370945302951
 CanvasRenderer:
@@ -111,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78}
+  m_AnchoredPosition: {x: 0, y: -75}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5738974427233205069
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -355,6 +355,8 @@ GameObject:
   - component: {fileID: 1646781547535476537}
   - component: {fileID: 352150027979794372}
   - component: {fileID: 340875419014642965}
+  - component: {fileID: 925416258532496754}
+  - component: {fileID: 3774314308584282047}
   m_Layer: 5
   m_Name: Item Preview
   m_TagString: Untagged
@@ -397,9 +399,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f99415f594444840a8f80a0172fc342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detailedItem: {fileID: 6243487538905694365, guid: 61df50fc26bdadd45a73452fd9509259, type: 3}
   detailedShopItem: {fileID: 6243487538905694365, guid: c65f0a2acb3a4c14aaf1ae6bc5032226, type: 3}
   nameText: {fileID: 8610861522249765601}
   sprite: {fileID: 5985849591775715355}
+  button: {fileID: 1214811180125683542}
 --- !u!61 &340875419014642965
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -426,3 +430,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 64.465355, y: 65.14739}
   m_EdgeRadius: 0
+--- !u!114 &925416258532496754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871849940855370385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f16af64682d0ce42bd969be6fe4bc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &3774314308584282047
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871849940855370385}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

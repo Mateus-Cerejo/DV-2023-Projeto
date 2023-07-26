@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private string type;
-    [SerializeField] private List<ShopItemSO> items;
+    [SerializeField] private List<ItemSO> items;
     [SerializeField] private Transform grid;
     [SerializeField] private GameObject shopItem;
     [SerializeField] private GameObject rightSide;
@@ -13,8 +13,10 @@ public class Shop : MonoBehaviour
 
     private List<GameObject> previews;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitUntil(() => SaveManager.Instance.ready);
+
         numOfItemsToDisplay = PlayerPrefs.GetInt(type + "NumOfItems", 3);
         previews = new List<GameObject>();
 
@@ -50,10 +52,10 @@ public class Shop : MonoBehaviour
     {
         if (PlayerPrefs.GetString("itemsIn" + type, "").Equals(""))
         {
-            foreach (ShopItemSO item in ChooseItemsRand())
+            foreach (ItemSO item in ChooseItemsRand())
             {
                 GameObject preview = Instantiate(shopItem, grid);
-                preview.GetComponent<ShopItemPreview>().SetUp(item, type);
+                preview.GetComponent<ItemPreview>().SetUp(item, type);
                 previews.Add(preview);
             }
         }
@@ -64,15 +66,15 @@ public class Shop : MonoBehaviour
             {
                 Debug.Log(int.Parse(itemIndex));
                 GameObject preview = Instantiate(shopItem, grid);
-                preview.GetComponent<ShopItemPreview>().SetUp(items[int.Parse(itemIndex)], type);
+                preview.GetComponent<ItemPreview>().SetUp(items[int.Parse(itemIndex)], type);
                 previews.Add(preview);
             }
         }
     }
 
-    private List<ShopItemSO> ChooseItemsRand()
+    private List<ItemSO> ChooseItemsRand()
     {
-        List<ShopItemSO> itemsToDisplay = new List<ShopItemSO>();
+        List<ItemSO> itemsToDisplay = new List<ItemSO>();
         List<int> usedIndexes = new List<int>();
         string itemsIndexesString = "";
 

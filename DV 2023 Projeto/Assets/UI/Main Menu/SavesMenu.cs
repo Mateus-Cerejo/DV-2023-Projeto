@@ -54,8 +54,8 @@ public class SavesMenu : MonoBehaviour
 
         PlayerPrefs.SetString("save Directory", SAVES_FOLDER + saveName);
 
-        SaveObject save = new SaveObject();
-        save.Load();
+         SaveObject save = new SaveObject();
+       // save.Load();
         string inJSON = JsonUtility.ToJson(save);
         File.WriteAllText(PlayerPrefs.GetString("save Directory") + "/" + Path.GetFileName(PlayerPrefs.GetString("save Directory")) + ".txt", inJSON);
 
