@@ -26,6 +26,9 @@ public class GunV2 : MonoBehaviour
     [SerializeField] private Image reloadRadialImage;
     private float reloadProgress = 0f;
 
+    [SerializeField] private AudioSource shootingAudioSource;
+    [SerializeField] private AudioSource reloadingAudioSource;
+
     void OnEnable() {
         ammoCounter.text = gameObject.name+":"+bulletsLeft+"/"+maxAmmo;
     }
@@ -65,7 +68,12 @@ public class GunV2 : MonoBehaviour
     {
         readyToShoot = false;
 
-        if(isShotgun)
+        if (shootingAudioSource != null)
+        {
+            shootingAudioSource.Play();
+        }
+
+        if (isShotgun)
         {
             Destroy(Instantiate(muzzleFlash, muzzleFlashPosition.position, attackPoint.rotation), 0.1f);
             for (int i = 0; i < bulletsToShoot; i++)
@@ -178,6 +186,11 @@ public class GunV2 : MonoBehaviour
     {
         reloading = true;
         reloadRadialImage.gameObject.SetActive(true);
+
+        if (reloadingAudioSource != null)
+        {
+            reloadingAudioSource.Play();
+        }
 
         float remainingReloadProgress = (reloadTime - reloadProgress) * (1f - reloadRadialImage.fillAmount);
 
