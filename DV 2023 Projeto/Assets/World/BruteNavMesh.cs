@@ -1,26 +1,25 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
+using UnityEngine.Animations.Rigging;
 
-public class ZombieNavMesh : MonoBehaviour
+public class BruteNavMesh : MonoBehaviour
 {
-    // Start is called before the first frame update
     private NavMeshAgent navMeshAgent;
-    [SerializeField] private GameObject mainTarget;
+    [SerializeField] private Transform mainTargetTransform;
     [SerializeField] private Transform currentTargetTransform;
 
     [SerializeField] private GameEvents gameEvents;
-
-    [SerializeField] private FieldOfView fov;
     private AudioSource audioSource;
+    [SerializeField] private AudioClip zombieScream;
     [SerializeField] private AudioClip zombieAttack;
+    
 
     private Animator animator;
+
+    [SerializeField] private bool isScreaming;
 
     [SerializeField] private bool isAttacking;
     [SerializeField] private float dist;
@@ -38,82 +37,69 @@ public class ZombieNavMesh : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private float attackSweepArea;
     [SerializeField] private float attackHeightArea = 0f;
-    [SerializeField] private float attackDamage;
+    [SerializeField] private float lightAttackDamage;
+    [SerializeField] private float heavyAttackDamage;
 
     [SerializeField] private ArtifactBackPack abp;
-    private float normalSpeed;
+    private float normalSpeed = 7.0f;
     private bool isFrozen = false;
 
-    void Start()
+
+
+    private void Start()
     {
-        //mainTargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        mainTargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        currentTargetTransform = mainTargetTransform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        isAttacking = false;
-        attackCooldown = 1f;
-        stoppingDistance = 1.5f;
-        delay = 0.2f;
-
-        fov = GetComponent<FieldOfView>();
         audioSource = GetComponent<AudioSource>();
 
-        mainTarget = GameObject.FindGameObjectWithTag("Gate");
-        currentTargetTransform = mainTarget.transform;
-        StartCoroutine("FindTargetsWithDelay", delay);
+        stoppingDistance = 2f;
+
+        attackCooldown = 2f;
+        isScreaming = true;
+        isAttacking = false;
+        navMeshAgent.avoidancePriority = 0;
+
+        gameEvents.OnPlayerDeath += OnPlayerDeath;
+        gameEvents.OnPlayerRessurection += OnPlayerRessurection;
 
         normalSpeed = navMeshAgent.speed;
-
     }
 
-    private IEnumerator FindTargetsWithDelay(float delay)
+    private void Update()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(delay);
-            //Debug.Log("In Enum");
-
-            Transform target = fov.FindVisibleTargets();
-            //Debug.Log(target);
-            currentTargetTransform = target != null
-                    ? target
-                    : mainTarget.transform;
-        }
-        
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        curVelocity = navMeshAgent.velocity;
-        Vector3 targetGroundDistance = new Vector3(currentTargetTransform.position.x, 0, currentTargetTransform.position.z);
         dist = Vector3.Distance(transform.position, currentTargetTransform.position);
+        //Debug.Log("Distance" + dist);
+        //Debug.Log("Velocity" + navMeshAgent.velocity);
 
-        currentTargetTransform = currentTargetTransform == null
-                ? mainTarget.transform
-                : currentTargetTransform;
+        //Debug.Log("CooldownTimer" + (Time.time - lastAttackTime));
 
-        if(dist <= stoppingDistance)
+        if (dist <= stoppingDistance)
         {
             animator.SetBool("isRunning", false);
-            animator.SetBool("isWalking", false);
             if ((Time.time - lastAttackTime >= attackCooldown) && !isAttacking)
             {
                 lastAttackTime = Time.time;
                 Attack();
-                
+                //Debug.Log("Attack");
             }
-            else if (!isAttacking) 
+            else if (!isAttacking)
             {
+                //Debug.Log("Stop");
                 Stop();
             }
+
+
         }
-        else if(!isAttacking)
+        else if (!isScreaming && !isAttacking)
         {
+            //Debug.Log("Chase");
             Chase();
         }
-
+        //navMeshAgent.destination = targetTransform.position;
     }
+
 
     private void Stop()
     {
@@ -135,21 +121,24 @@ public class ZombieNavMesh : MonoBehaviour
     private void Chase()
     {
         navMeshAgent.isStopped = false;
-        //Vector3 targetDirection = new Vector3(currentTargetTransform.position.x, currentTargetTransform.position.y, 0);
         navMeshAgent.SetDestination(currentTargetTransform.position);
-        animator.SetBool("isWalking", true);
+        animator.SetBool("isRunning", true);
     }
 
     private void Attack()
     {
         navMeshAgent.velocity = Vector3.zero;
         navMeshAgent.isStopped = true;
+
+        int attackType = Random.Range(0, 10);
         animator.SetBool("isAttacking", true);
+        animator.SetInteger("attackType", attackType);
         isAttacking = true;
     }
 
     private void startAttack()
     {
+        audioSource.PlayOneShot(zombieAttack);
         audioSource.PlayOneShot(zombieAttack);
     }
 
@@ -158,6 +147,27 @@ public class ZombieNavMesh : MonoBehaviour
         animator.SetBool("isAttacking", false);
         isAttacking = false;
         lastAttackTime = Time.time;
+        Debug.Log("End Attack");
+    }
+
+    private void startScreaming()
+    {
+        audioSource.PlayOneShot(zombieScream);
+    }
+
+    private void stopScreaming()
+    {
+        isScreaming = false;
+    }
+
+    private void OnPlayerDeath()
+    {
+        currentTargetTransform = GameObject.FindGameObjectWithTag("Gate").transform;
+    }
+
+    private void OnPlayerRessurection()
+    {
+        currentTargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void SpawnLightHurtBox()
@@ -169,15 +179,33 @@ public class ZombieNavMesh : MonoBehaviour
         {
             if (objectHit.gameObject.layer == 31) //Player layer at position 31
             {
-                objectHit.gameObject.GetComponent<PlayerStats>().TakeDamage(attackDamage);
+                objectHit.gameObject.GetComponent<PlayerStats>().TakeDamage(lightAttackDamage);
             }
             if (objectHit.gameObject.layer == 9) //obstacle(barrier) layer at position 9
             {
-                objectHit.gameObject.GetComponent<ObstacleHealth>().TakeDmg(attackDamage);
+                objectHit.gameObject.GetComponent<ObstacleHealth>().TakeDmg(lightAttackDamage);
             }
         }
     }
 
+    private void SpawnHeavytHurtBox()
+    {
+        Vector3 boxSize = new Vector3(attackSweepArea + 0.75f, attackHeightArea, attackRange * 1.5f);
+
+        Collider[] objectsHit = Physics.OverlapBox(attackPoint.position, boxSize / 2f, attackPoint.rotation, layer);
+        foreach (Collider objectHit in objectsHit)
+        {
+            if (objectHit.gameObject.layer == 31) //Player layer at position 31
+            {
+                objectHit.gameObject.GetComponent<PlayerStats>().TakeDamage(heavyAttackDamage);
+            }
+            if (objectHit.gameObject.layer == 9) //obstacle(barrier) layer at position 9
+            {
+                objectHit.gameObject.GetComponent<ObstacleHealth>().TakeDmg(heavyAttackDamage);
+            }
+        }
+    }
+    /*
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
@@ -189,7 +217,7 @@ public class ZombieNavMesh : MonoBehaviour
         Handles.matrix = Matrix4x4.TRS(attackPoint.position, attackPoint.rotation, Vector3.one);
         Handles.DrawWireCube(Vector3.zero, new Vector3(attackSweepArea, attackHeightArea, attackRange));
     }
-
+    */
     public void ApplyFreezeEffect()
     {
         if (!isFrozen)
@@ -209,5 +237,4 @@ public class ZombieNavMesh : MonoBehaviour
 
         }
     }
-
 }

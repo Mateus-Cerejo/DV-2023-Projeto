@@ -105,44 +105,6 @@ public class WaveSpawner : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (waveState == WaveState.ONGOING)
-        {
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                SpawnEnemyGroup();
-            }
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                wave.SetWaveStats(waveNumber);
-            }
-            
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                Debug.Log("Destroying Enemy");
-                GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-                if(enemy.GetComponent<ZombieStats>() == null)
-                {
-                    enemy.GetComponent<BruteStats>().Die();
-                }
-                else{
-                    enemy.GetComponent<ZombieStats>().Die();
-                }
-                
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            //Next SpawnerState
-            NextWaveState();
-
-        }
-
-    }
-
     private void SpawnEnemyGroup()
     {
         Debug.Log("Spawning");

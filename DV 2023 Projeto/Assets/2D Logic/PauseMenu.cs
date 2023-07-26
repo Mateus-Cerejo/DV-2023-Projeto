@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
 
+    private bool active = false;
     public static PauseMenu Instance { get; private set; }
 
     private void Awake()
@@ -25,7 +26,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pauseMenu.SetActive(!pauseMenu.active);
+            active = !active;
+            pauseMenu.SetActive(active);
         }
     }
 

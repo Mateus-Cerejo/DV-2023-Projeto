@@ -31,21 +31,6 @@ public class SaveManager : MonoBehaviour
         ready = true;
     }
 
-    /*
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Save();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Load();
-        }
-    }
-    */
-
     void OnApplicationQuit()
     {
         Save();
